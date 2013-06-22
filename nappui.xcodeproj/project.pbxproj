@@ -49,6 +49,7 @@
 		B69F74EA17763F81007F0490 /* TiUIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263E21742E3820016A667 /* TiUIView+Animation.m */; };
 		B69F74EB17764073007F0490 /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B263D61742E3670016A667 /* JRSwizzle.h */; };
 		B69F74EC17764076007F0490 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263D71742E3670016A667 /* JRSwizzle.m */; };
+		B69F74ED17764572007F0490 /* TiUIPicker+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263DA1742E3670016A667 /* TiUIPicker+Extended.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,10 +208,10 @@
 				AA747D9F0F9514B9006C5449 /* DkNappUi_Prefix.pch in Headers */,
 				B69F74EB17764073007F0490 /* JRSwizzle.h in Headers */,
 				B69F74DE17763F08007F0490 /* TiUITabGroup+Extend.h in Headers */,
-				B69F74DF17763F0B007F0490 /* TiUIPicker+Extended.h in Headers */,
 				B69F74E217763F36007F0490 /* TiUITextField+Extended.h in Headers */,
 				B69F74E517763F46007F0490 /* TiUIView+Gestures.h in Headers */,
 				B69F74E917763F7F007F0490 /* TiUIView+Animation.h in Headers */,
+				B69F74DF17763F0B007F0490 /* TiUIPicker+Extended.h in Headers */,
 				B69F74E817763F5E007F0490 /* TiUIScrollableView+Extend.h in Headers */,
 				B69F74E617763F54007F0490 /* TiUIView+TiUIWindow+Blurred.h in Headers */,
 				B69F74E717763F5A007F0490 /* TiUIWebView+Extend.h in Headers */,
@@ -291,6 +292,7 @@
 				B69F74EC17764076007F0490 /* JRSwizzle.m in Sources */,
 				B69F74EA17763F81007F0490 /* TiUIView+Animation.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* DkNappUiModuleAssets.m in Sources */,
+				B69F74ED17764572007F0490 /* TiUIPicker+Extended.m in Sources */,
 				B69F74D717761F9F007F0490 /* TiUIScrollableView+Extend.m in Sources */,
 				B672232A175620090074146C /* TiUIView+TiUIWindow+Blurred.m in Sources */,
 				B69F74D317761F6C007F0490 /* TiUIWebView+Extend.m in Sources */,
