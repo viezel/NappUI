@@ -1,4 +1,8 @@
+.DS_Store
 tmp
 bin
 build
-*.zip
+*.plist
+*.xcuserstate
+*.xcscheme
+*.xcuserdatad
