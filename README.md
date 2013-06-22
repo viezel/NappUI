@@ -192,6 +192,9 @@ var toolbar = Ti.UI.iOS.createToolbar({
 
 ## Changelog
 
+* 1.0.1
+  * Bugfix - invalid build, and some functions did not work as expected. 
+
 * 1.0
   * Init commit, working module.
 

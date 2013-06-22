@@ -2,8 +2,27 @@
 var NappUI = require('dk.napp.ui');
 
 
-var window = Ti.UI.createWindow();
+var window = Ti.UI.createWindow({
+	backgroundColor:"#FFF"
+});
 
+var view = Ti.UI.createView({
+	backgroundColor: '#999',
+    height: 100,
+    shadow: {
+        shadowColor: '#000',
+        shadowRadius: 10,
+        shadowOffset: { x: 5, y: 5 },
+        shadowOpacity: 1
+    },
+    top: 50,
+    width: 100
+});
+
+window.add(view);
+
+
+/*
 // example of the pan gesture.. 
 
 var image = Ti.UI.createImageView({
@@ -39,4 +58,7 @@ image.addEventListener('panend', function(e){
     currentTranslation.x = 0.0;
     currentTranslation.y = 0.0;
 });
+*/
+
+
 window.open();
