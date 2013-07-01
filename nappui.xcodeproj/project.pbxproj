@@ -26,30 +26,23 @@
 		24DE9E1211C5FE74003F90F6 /* DkNappUiModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* DkNappUiModuleAssets.m */; };
 		AA747D9F0F9514B9006C5449 /* DkNappUi_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* DkNappUi_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		B67223261755D9630074146C /* TiUIView+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = B67223241755D9630074146C /* TiUIView+Gestures.m */; };
-		B672232A175620090074146C /* TiUIView+TiUIWindow+Blurred.m in Sources */ = {isa = PBXBuildFile; fileRef = B6722328175620090074146C /* TiUIView+TiUIWindow+Blurred.m */; };
-		B69F74CF17761F51007F0490 /* TiUIiOSToolbarProxy+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F74CD17761F51007F0490 /* TiUIiOSToolbarProxy+Extended.m */; };
-		B69F74D317761F6C007F0490 /* TiUIWebView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F74D117761F6C007F0490 /* TiUIWebView+Extend.m */; };
-		B69F74D717761F9F007F0490 /* TiUIScrollableView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F74D517761F9F007F0490 /* TiUIScrollableView+Extend.m */; };
-		B69F74DB177622B2007F0490 /* TiUITabGroup+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F74D9177622B1007F0490 /* TiUITabGroup+Extend.m */; };
-		B69F74DC17763EFB007F0490 /* TiUIView+WithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263E01742E3670016A667 /* TiUIView+WithShadow.m */; };
-		B69F74DD17763F06007F0490 /* TiUIiOSToolbarProxy+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = B69F74CC17761F51007F0490 /* TiUIiOSToolbarProxy+Extended.h */; };
-		B69F74DE17763F08007F0490 /* TiUITabGroup+Extend.h in Headers */ = {isa = PBXBuildFile; fileRef = B69F74D8177622B1007F0490 /* TiUITabGroup+Extend.h */; };
-		B69F74DF17763F0B007F0490 /* TiUIPicker+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B263D91742E3670016A667 /* TiUIPicker+Extended.h */; };
-		B69F74E017763F32007F0490 /* TiUISearchBar+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B263DB1742E3670016A667 /* TiUISearchBar+Extended.h */; };
-		B69F74E117763F34007F0490 /* TiUISearchBar+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263DC1742E3670016A667 /* TiUISearchBar+Extended.m */; };
-		B69F74E217763F36007F0490 /* TiUITextField+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B263DD1742E3670016A667 /* TiUITextField+Extended.h */; };
-		B69F74E317763F38007F0490 /* TiUITextField+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263DE1742E3670016A667 /* TiUITextField+Extended.m */; };
-		B69F74E417763F3B007F0490 /* TiUIView+WithShadow.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B263DF1742E3670016A667 /* TiUIView+WithShadow.h */; };
-		B69F74E517763F46007F0490 /* TiUIView+Gestures.h in Headers */ = {isa = PBXBuildFile; fileRef = B67223231755D9630074146C /* TiUIView+Gestures.h */; };
-		B69F74E617763F54007F0490 /* TiUIView+TiUIWindow+Blurred.h in Headers */ = {isa = PBXBuildFile; fileRef = B6722327175620090074146C /* TiUIView+TiUIWindow+Blurred.h */; };
-		B69F74E717763F5A007F0490 /* TiUIWebView+Extend.h in Headers */ = {isa = PBXBuildFile; fileRef = B69F74D017761F6C007F0490 /* TiUIWebView+Extend.h */; };
-		B69F74E817763F5E007F0490 /* TiUIScrollableView+Extend.h in Headers */ = {isa = PBXBuildFile; fileRef = B69F74D417761F9F007F0490 /* TiUIScrollableView+Extend.h */; };
-		B69F74E917763F7F007F0490 /* TiUIView+Animation.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B263E11742E3820016A667 /* TiUIView+Animation.h */; };
-		B69F74EA17763F81007F0490 /* TiUIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263E21742E3820016A667 /* TiUIView+Animation.m */; };
-		B69F74EB17764073007F0490 /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B263D61742E3670016A667 /* JRSwizzle.h */; };
-		B69F74EC17764076007F0490 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263D71742E3670016A667 /* JRSwizzle.m */; };
-		B69F74ED17764572007F0490 /* TiUIPicker+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263DA1742E3670016A667 /* TiUIPicker+Extended.m */; };
+		B63EB6A917806346005AF933 /* TiUIView+Animation.h in Headers */ = {isa = PBXBuildFile; fileRef = B679C136177C79AF0069CD29 /* TiUIView+Animation.h */; };
+		B63EB6AA1780634C005AF933 /* TiUIView+Gestures.h in Headers */ = {isa = PBXBuildFile; fileRef = B679C138177C79AF0069CD29 /* TiUIView+Gestures.h */; };
+		B63EB6AB17806350005AF933 /* TiUIView+TiUIWindow+Blurred.h in Headers */ = {isa = PBXBuildFile; fileRef = B679C13A177C79AF0069CD29 /* TiUIView+TiUIWindow+Blurred.h */; };
+		B63EB6AC17806353005AF933 /* TiUIView+WithShadow.h in Headers */ = {isa = PBXBuildFile; fileRef = B679C13C177C79AF0069CD29 /* TiUIView+WithShadow.h */; };
+		B63EB6AD1780635C005AF933 /* TiUIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C137177C79AF0069CD29 /* TiUIView+Animation.m */; };
+		B63EB6AE17806364005AF933 /* TiUIView+Gestures.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C139177C79AF0069CD29 /* TiUIView+Gestures.m */; };
+		B63EB6AF17806367005AF933 /* TiUIView+TiUIWindow+Blurred.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C13B177C79AF0069CD29 /* TiUIView+TiUIWindow+Blurred.m */; };
+		B63EB6B01780636B005AF933 /* TiUIView+WithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C13D177C79AF0069CD29 /* TiUIView+WithShadow.m */; };
+		B63EB6B1178064F1005AF933 /* TiUIPicker+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = B679C12C177C79AE0069CD29 /* TiUIPicker+Extended.h */; };
+		B63EB6B3178064F8005AF933 /* TiUISearchBar+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = B679C130177C79AE0069CD29 /* TiUISearchBar+Extended.h */; };
+		B63EB6B417806500005AF933 /* TiUIPicker+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C12D177C79AE0069CD29 /* TiUIPicker+Extended.m */; };
+		B63EB6B61780650A005AF933 /* TiUISearchBar+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C131177C79AF0069CD29 /* TiUISearchBar+Extended.m */; };
+		B6655F42177C506F004E2E16 /* DkNappUiModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* DkNappUiModuleAssets.h */; };
+		B679C0DB177C732E0069CD29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B679C0D9177C73250069CD29 /* UIKit.framework */; };
+		B679C158177C79D90069CD29 /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B679C156177C79D90069CD29 /* JRSwizzle.h */; };
+		B679C159177C79D90069CD29 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C157177C79D90069CD29 /* JRSwizzle.m */; };
+		B6CF8919177C1BAC005806B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CF8917177C1BA5005806B5 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,30 +63,32 @@
 		24DE9E1011C5FE74003F90F6 /* DkNappUiModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DkNappUiModuleAssets.m; path = Classes/DkNappUiModuleAssets.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* DkNappUi_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DkNappUi_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B67223231755D9630074146C /* TiUIView+Gestures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUIView+Gestures.h"; sourceTree = "<group>"; };
-		B67223241755D9630074146C /* TiUIView+Gestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUIView+Gestures.m"; sourceTree = "<group>"; };
-		B6722327175620090074146C /* TiUIView+TiUIWindow+Blurred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUIView+TiUIWindow+Blurred.h"; sourceTree = "<group>"; };
-		B6722328175620090074146C /* TiUIView+TiUIWindow+Blurred.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUIView+TiUIWindow+Blurred.m"; sourceTree = "<group>"; };
-		B69F74CC17761F51007F0490 /* TiUIiOSToolbarProxy+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUIiOSToolbarProxy+Extended.h"; sourceTree = "<group>"; };
-		B69F74CD17761F51007F0490 /* TiUIiOSToolbarProxy+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUIiOSToolbarProxy+Extended.m"; sourceTree = "<group>"; };
-		B69F74D017761F6C007F0490 /* TiUIWebView+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUIWebView+Extend.h"; sourceTree = "<group>"; };
-		B69F74D117761F6C007F0490 /* TiUIWebView+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUIWebView+Extend.m"; sourceTree = "<group>"; };
-		B69F74D417761F9F007F0490 /* TiUIScrollableView+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUIScrollableView+Extend.h"; sourceTree = "<group>"; };
-		B69F74D517761F9F007F0490 /* TiUIScrollableView+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUIScrollableView+Extend.m"; sourceTree = "<group>"; };
-		B69F74D8177622B1007F0490 /* TiUITabGroup+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUITabGroup+Extend.h"; sourceTree = "<group>"; };
-		B69F74D9177622B1007F0490 /* TiUITabGroup+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUITabGroup+Extend.m"; sourceTree = "<group>"; };
-		B6B263D61742E3670016A667 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
-		B6B263D71742E3670016A667 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
-		B6B263D91742E3670016A667 /* TiUIPicker+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUIPicker+Extended.h"; sourceTree = "<group>"; };
-		B6B263DA1742E3670016A667 /* TiUIPicker+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUIPicker+Extended.m"; sourceTree = "<group>"; };
-		B6B263DB1742E3670016A667 /* TiUISearchBar+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUISearchBar+Extended.h"; sourceTree = "<group>"; };
-		B6B263DC1742E3670016A667 /* TiUISearchBar+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUISearchBar+Extended.m"; sourceTree = "<group>"; };
-		B6B263DD1742E3670016A667 /* TiUITextField+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUITextField+Extended.h"; sourceTree = "<group>"; };
-		B6B263DE1742E3670016A667 /* TiUITextField+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUITextField+Extended.m"; sourceTree = "<group>"; };
-		B6B263DF1742E3670016A667 /* TiUIView+WithShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUIView+WithShadow.h"; sourceTree = "<group>"; };
-		B6B263E01742E3670016A667 /* TiUIView+WithShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUIView+WithShadow.m"; sourceTree = "<group>"; };
-		B6B263E11742E3820016A667 /* TiUIView+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUIView+Animation.h"; sourceTree = "<group>"; };
-		B6B263E21742E3820016A667 /* TiUIView+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUIView+Animation.m"; sourceTree = "<group>"; };
+		B679C0D9177C73250069CD29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B679C12A177C79AE0069CD29 /* TiUIiOSToolbarProxy+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUIiOSToolbarProxy+Extended.h"; path = "Classes/TiUIiOSToolbarProxy+Extended.h"; sourceTree = "<group>"; };
+		B679C12B177C79AE0069CD29 /* TiUIiOSToolbarProxy+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUIiOSToolbarProxy+Extended.m"; path = "Classes/TiUIiOSToolbarProxy+Extended.m"; sourceTree = "<group>"; };
+		B679C12C177C79AE0069CD29 /* TiUIPicker+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUIPicker+Extended.h"; path = "Classes/TiUIPicker+Extended.h"; sourceTree = "<group>"; };
+		B679C12D177C79AE0069CD29 /* TiUIPicker+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUIPicker+Extended.m"; path = "Classes/TiUIPicker+Extended.m"; sourceTree = "<group>"; };
+		B679C12E177C79AE0069CD29 /* TiUIScrollableView+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUIScrollableView+Extend.h"; path = "Classes/TiUIScrollableView+Extend.h"; sourceTree = "<group>"; };
+		B679C12F177C79AE0069CD29 /* TiUIScrollableView+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUIScrollableView+Extend.m"; path = "Classes/TiUIScrollableView+Extend.m"; sourceTree = "<group>"; };
+		B679C130177C79AE0069CD29 /* TiUISearchBar+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUISearchBar+Extended.h"; path = "Classes/TiUISearchBar+Extended.h"; sourceTree = "<group>"; };
+		B679C131177C79AF0069CD29 /* TiUISearchBar+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUISearchBar+Extended.m"; path = "Classes/TiUISearchBar+Extended.m"; sourceTree = "<group>"; };
+		B679C132177C79AF0069CD29 /* TiUITabGroup+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUITabGroup+Extend.h"; path = "Classes/TiUITabGroup+Extend.h"; sourceTree = "<group>"; };
+		B679C133177C79AF0069CD29 /* TiUITabGroup+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUITabGroup+Extend.m"; path = "Classes/TiUITabGroup+Extend.m"; sourceTree = "<group>"; };
+		B679C134177C79AF0069CD29 /* TiUITextField+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUITextField+Extended.h"; path = "Classes/TiUITextField+Extended.h"; sourceTree = "<group>"; };
+		B679C135177C79AF0069CD29 /* TiUITextField+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUITextField+Extended.m"; path = "Classes/TiUITextField+Extended.m"; sourceTree = "<group>"; };
+		B679C136177C79AF0069CD29 /* TiUIView+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUIView+Animation.h"; path = "Classes/TiUIView+Animation.h"; sourceTree = "<group>"; };
+		B679C137177C79AF0069CD29 /* TiUIView+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUIView+Animation.m"; path = "Classes/TiUIView+Animation.m"; sourceTree = "<group>"; };
+		B679C138177C79AF0069CD29 /* TiUIView+Gestures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUIView+Gestures.h"; path = "Classes/TiUIView+Gestures.h"; sourceTree = "<group>"; };
+		B679C139177C79AF0069CD29 /* TiUIView+Gestures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUIView+Gestures.m"; path = "Classes/TiUIView+Gestures.m"; sourceTree = "<group>"; };
+		B679C13A177C79AF0069CD29 /* TiUIView+TiUIWindow+Blurred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUIView+TiUIWindow+Blurred.h"; path = "Classes/TiUIView+TiUIWindow+Blurred.h"; sourceTree = "<group>"; };
+		B679C13B177C79AF0069CD29 /* TiUIView+TiUIWindow+Blurred.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUIView+TiUIWindow+Blurred.m"; path = "Classes/TiUIView+TiUIWindow+Blurred.m"; sourceTree = "<group>"; };
+		B679C13C177C79AF0069CD29 /* TiUIView+WithShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUIView+WithShadow.h"; path = "Classes/TiUIView+WithShadow.h"; sourceTree = "<group>"; };
+		B679C13D177C79AF0069CD29 /* TiUIView+WithShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUIView+WithShadow.m"; path = "Classes/TiUIView+WithShadow.m"; sourceTree = "<group>"; };
+		B679C13E177C79AF0069CD29 /* TiUIWebView+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUIWebView+Extend.h"; path = "Classes/TiUIWebView+Extend.h"; sourceTree = "<group>"; };
+		B679C13F177C79AF0069CD29 /* TiUIWebView+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUIWebView+Extend.m"; path = "Classes/TiUIWebView+Extend.m"; sourceTree = "<group>"; };
+		B679C156177C79D90069CD29 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JRSwizzle.h; path = Classes/JRSwizzle.h; sourceTree = "<group>"; };
+		B679C157177C79D90069CD29 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JRSwizzle.m; path = Classes/JRSwizzle.m; sourceTree = "<group>"; };
+		B6CF8917177C1BA5005806B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libDkNappUi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDkNappUi.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,6 +98,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+				B6CF8919177C1BAC005806B5 /* QuartzCore.framework in Frameworks */,
+				B679C0DB177C732E0069CD29 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +128,8 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B679C0D9177C73250069CD29 /* UIKit.framework */,
+				B6CF8917177C1BA5005806B5 /* QuartzCore.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -139,8 +138,30 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B6B263D51742E3670016A667 /* JRSwizzle */,
-				B6B263D81742E3670016A667 /* Ti */,
+				B679C156177C79D90069CD29 /* JRSwizzle.h */,
+				B679C157177C79D90069CD29 /* JRSwizzle.m */,
+				B679C12A177C79AE0069CD29 /* TiUIiOSToolbarProxy+Extended.h */,
+				B679C12B177C79AE0069CD29 /* TiUIiOSToolbarProxy+Extended.m */,
+				B679C12C177C79AE0069CD29 /* TiUIPicker+Extended.h */,
+				B679C12D177C79AE0069CD29 /* TiUIPicker+Extended.m */,
+				B679C12E177C79AE0069CD29 /* TiUIScrollableView+Extend.h */,
+				B679C12F177C79AE0069CD29 /* TiUIScrollableView+Extend.m */,
+				B679C130177C79AE0069CD29 /* TiUISearchBar+Extended.h */,
+				B679C131177C79AF0069CD29 /* TiUISearchBar+Extended.m */,
+				B679C132177C79AF0069CD29 /* TiUITabGroup+Extend.h */,
+				B679C133177C79AF0069CD29 /* TiUITabGroup+Extend.m */,
+				B679C134177C79AF0069CD29 /* TiUITextField+Extended.h */,
+				B679C135177C79AF0069CD29 /* TiUITextField+Extended.m */,
+				B679C136177C79AF0069CD29 /* TiUIView+Animation.h */,
+				B679C137177C79AF0069CD29 /* TiUIView+Animation.m */,
+				B679C138177C79AF0069CD29 /* TiUIView+Gestures.h */,
+				B679C139177C79AF0069CD29 /* TiUIView+Gestures.m */,
+				B679C13A177C79AF0069CD29 /* TiUIView+TiUIWindow+Blurred.h */,
+				B679C13B177C79AF0069CD29 /* TiUIView+TiUIWindow+Blurred.m */,
+				B679C13C177C79AF0069CD29 /* TiUIView+WithShadow.h */,
+				B679C13D177C79AF0069CD29 /* TiUIView+WithShadow.m */,
+				B679C13E177C79AF0069CD29 /* TiUIWebView+Extend.h */,
+				B679C13F177C79AF0069CD29 /* TiUIWebView+Extend.m */,
 				24DE9E0F11C5FE74003F90F6 /* DkNappUiModuleAssets.h */,
 				24DE9E1011C5FE74003F90F6 /* DkNappUiModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* DkNappUiModule.h */,
@@ -158,46 +179,6 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		B6B263D51742E3670016A667 /* JRSwizzle */ = {
-			isa = PBXGroup;
-			children = (
-				B6B263D61742E3670016A667 /* JRSwizzle.h */,
-				B6B263D71742E3670016A667 /* JRSwizzle.m */,
-			);
-			name = JRSwizzle;
-			path = Classes/JRSwizzle;
-			sourceTree = "<group>";
-		};
-		B6B263D81742E3670016A667 /* Ti */ = {
-			isa = PBXGroup;
-			children = (
-				B69F74CC17761F51007F0490 /* TiUIiOSToolbarProxy+Extended.h */,
-				B69F74CD17761F51007F0490 /* TiUIiOSToolbarProxy+Extended.m */,
-				B69F74D8177622B1007F0490 /* TiUITabGroup+Extend.h */,
-				B69F74D9177622B1007F0490 /* TiUITabGroup+Extend.m */,
-				B6B263D91742E3670016A667 /* TiUIPicker+Extended.h */,
-				B6B263DA1742E3670016A667 /* TiUIPicker+Extended.m */,
-				B6B263DB1742E3670016A667 /* TiUISearchBar+Extended.h */,
-				B6B263DC1742E3670016A667 /* TiUISearchBar+Extended.m */,
-				B6B263DD1742E3670016A667 /* TiUITextField+Extended.h */,
-				B6B263DE1742E3670016A667 /* TiUITextField+Extended.m */,
-				B6B263DF1742E3670016A667 /* TiUIView+WithShadow.h */,
-				B6B263E01742E3670016A667 /* TiUIView+WithShadow.m */,
-				B67223231755D9630074146C /* TiUIView+Gestures.h */,
-				B67223241755D9630074146C /* TiUIView+Gestures.m */,
-				B6B263E11742E3820016A667 /* TiUIView+Animation.h */,
-				B6B263E21742E3820016A667 /* TiUIView+Animation.m */,
-				B6722327175620090074146C /* TiUIView+TiUIWindow+Blurred.h */,
-				B6722328175620090074146C /* TiUIView+TiUIWindow+Blurred.m */,
-				B69F74D017761F6C007F0490 /* TiUIWebView+Extend.h */,
-				B69F74D117761F6C007F0490 /* TiUIWebView+Extend.m */,
-				B69F74D417761F9F007F0490 /* TiUIScrollableView+Extend.h */,
-				B69F74D517761F9F007F0490 /* TiUIScrollableView+Extend.m */,
-			);
-			name = Ti;
-			path = Classes/Ti;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -206,18 +187,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA747D9F0F9514B9006C5449 /* DkNappUi_Prefix.pch in Headers */,
-				B69F74EB17764073007F0490 /* JRSwizzle.h in Headers */,
-				B69F74DE17763F08007F0490 /* TiUITabGroup+Extend.h in Headers */,
-				B69F74E217763F36007F0490 /* TiUITextField+Extended.h in Headers */,
-				B69F74E517763F46007F0490 /* TiUIView+Gestures.h in Headers */,
-				B69F74E917763F7F007F0490 /* TiUIView+Animation.h in Headers */,
-				B69F74DF17763F0B007F0490 /* TiUIPicker+Extended.h in Headers */,
-				B69F74E817763F5E007F0490 /* TiUIScrollableView+Extend.h in Headers */,
-				B69F74E617763F54007F0490 /* TiUIView+TiUIWindow+Blurred.h in Headers */,
-				B69F74E717763F5A007F0490 /* TiUIWebView+Extend.h in Headers */,
-				B69F74E417763F3B007F0490 /* TiUIView+WithShadow.h in Headers */,
-				B69F74E017763F32007F0490 /* TiUISearchBar+Extended.h in Headers */,
-				B69F74DD17763F06007F0490 /* TiUIiOSToolbarProxy+Extended.h in Headers */,
+				B6655F42177C506F004E2E16 /* DkNappUiModuleAssets.h in Headers */,
+				B679C158177C79D90069CD29 /* JRSwizzle.h in Headers */,
+				B63EB6A917806346005AF933 /* TiUIView+Animation.h in Headers */,
+				B63EB6AA1780634C005AF933 /* TiUIView+Gestures.h in Headers */,
+				B63EB6AB17806350005AF933 /* TiUIView+TiUIWindow+Blurred.h in Headers */,
+				B63EB6AC17806353005AF933 /* TiUIView+WithShadow.h in Headers */,
+				B63EB6B1178064F1005AF933 /* TiUIPicker+Extended.h in Headers */,
+				B63EB6B3178064F8005AF933 /* TiUISearchBar+Extended.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,19 +266,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				24DD6CFA1134B3F500162E58 /* DkNappUiModule.m in Sources */,
-				B69F74EC17764076007F0490 /* JRSwizzle.m in Sources */,
-				B69F74EA17763F81007F0490 /* TiUIView+Animation.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* DkNappUiModuleAssets.m in Sources */,
-				B69F74ED17764572007F0490 /* TiUIPicker+Extended.m in Sources */,
-				B69F74D717761F9F007F0490 /* TiUIScrollableView+Extend.m in Sources */,
-				B672232A175620090074146C /* TiUIView+TiUIWindow+Blurred.m in Sources */,
-				B69F74D317761F6C007F0490 /* TiUIWebView+Extend.m in Sources */,
-				B69F74DC17763EFB007F0490 /* TiUIView+WithShadow.m in Sources */,
-				B69F74E117763F34007F0490 /* TiUISearchBar+Extended.m in Sources */,
-				B67223261755D9630074146C /* TiUIView+Gestures.m in Sources */,
-				B69F74CF17761F51007F0490 /* TiUIiOSToolbarProxy+Extended.m in Sources */,
-				B69F74E317763F38007F0490 /* TiUITextField+Extended.m in Sources */,
-				B69F74DB177622B2007F0490 /* TiUITabGroup+Extend.m in Sources */,
+				B679C159177C79D90069CD29 /* JRSwizzle.m in Sources */,
+				B63EB6AD1780635C005AF933 /* TiUIView+Animation.m in Sources */,
+				B63EB6AE17806364005AF933 /* TiUIView+Gestures.m in Sources */,
+				B63EB6AF17806367005AF933 /* TiUIView+TiUIWindow+Blurred.m in Sources */,
+				B63EB6B01780636B005AF933 /* TiUIView+WithShadow.m in Sources */,
+				B63EB6B417806500005AF933 /* TiUIPicker+Extended.m in Sources */,
+				B63EB6B61780650A005AF933 /* TiUISearchBar+Extended.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,10 +292,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphoneos*]" = (
 					armv6,
 					armv7,
@@ -368,14 +337,8 @@
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphoneos*]" = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				DSTROOT = /tmp/DkNappUi.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -394,7 +357,7 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
@@ -496,6 +459,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -507,9 +471,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "Build & test";
 				ZERO_LINK = NO;
 			};
