@@ -9,7 +9,7 @@
 #import "TiBase.h"
 #import "TiUIWebView.h"
 
-@interface TiUIWebView (TiUIWebView_Extend)
+@interface TiUIWebView (Extend)
 
 - (void)setNormalScrollSpeed_:(id)args;
 

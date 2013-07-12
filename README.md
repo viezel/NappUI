@@ -19,6 +19,13 @@ Simply add the following lines to your `tiapp.xml` file:
 
 The following lists the UI components and its new extended functionality.
 
+Start by adding the NappUI.js to your project and add the following lines to the root of your project. (app.js) or (index.js for Alloy)
+
+```javascript
+var NappUI = require("NappUI");
+NappUI.init();
+```
+
 ### Window
 
 * Add a blur effect
@@ -191,6 +198,9 @@ var toolbar = Ti.UI.iOS.createToolbar({
 ```
 
 ## Changelog
+
+* 1.0.2
+  * Aded NappUI.js for better use of this module. This is due to some limitations of the Titanium mMdule SDK.
 
 * 1.0.1
   * Bugfix - invalid build, and some functions did not work as expected. 

@@ -6,6 +6,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "TiUIPicker+Extended.h"
+#import "TiUtils.h"
 
 @implementation TiUIPicker (Extended)
 
@@ -22,11 +23,9 @@
                                 )];
     //[mask setFrame:  CGRectMake(14.0f, 10.0f, 293.0f, 196.0f)];
     [mask setCornerRadius: 5.0f];
+    
     [picker.layer setMask: mask];
     [mask release];
 }
-
-
-
 
 @end

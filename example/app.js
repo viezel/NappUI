@@ -1,6 +1,10 @@
 
-var NappUI = require('dk.napp.ui');
+// We need to use the NappUI.js to init this module
+var NappUI = require("NappUI");
+NappUI.init();
 
+
+// NOW - Start using Napp UI
 
 var window = Ti.UI.createWindow({
 	backgroundColor:"#FFF"
@@ -8,17 +12,37 @@ var window = Ti.UI.createWindow({
 
 var view = Ti.UI.createView({
 	backgroundColor: '#999',
-    height: 100,
+    height: 50,
+     width: 50,
     shadow: {
         shadowColor: '#000',
         shadowRadius: 10,
         shadowOffset: { x: 5, y: 5 },
         shadowOpacity: 1
     },
-    top: 50,
-    width: 100
+    top: 15
 });
 
+var picker = Ti.UI.createPicker({
+	bottom: 5,
+    mask:{
+        left:14,
+        top:10,
+        width:293,
+        height:196
+    }
+});
+
+var data = [];
+data[0]=Ti.UI.createPickerRow({title:'Bananas'});
+data[1]=Ti.UI.createPickerRow({title:'Strawberries'});
+data[2]=Ti.UI.createPickerRow({title:'Mangos'});
+data[3]=Ti.UI.createPickerRow({title:'Grapes'});
+picker.add(data);
+picker.selectionIndicator = true;
+
+
+window.add(picker);
 window.add(view);
 
 

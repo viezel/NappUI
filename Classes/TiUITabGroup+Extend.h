@@ -9,7 +9,7 @@
 #import "TiBase.h"
 #import "TiUITabGroup.h"
 
-@interface TiUITabGroup (TiUITabGroup_Extend)
+@interface TiUITabGroup (Extend)
 
 - (void)setCustomBackgroundColor_:(id)color;
 - (void)setCustomBackgroundImage_:(id)imageName;

@@ -6,7 +6,7 @@
 
 #import "TiUIScrollableView+Extend.h"
 
-@implementation TiUIScrollableView (TiUIScrollableView_Extend)
+@implementation TiUIScrollableView (Extend)
 
 -(void)setPagingControlCurrentIndicatorColor_:(id)args
 {

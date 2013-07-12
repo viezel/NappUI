@@ -9,7 +9,7 @@
 #import "TiUITabGroup+Extend.h"
 #import "TiUtils.h"
 
-@implementation TiUITabGroup (TiUITabGroup_Extend)
+@implementation TiUITabGroup (Extend)
 
 - (void)setCustomBackgroundColor_:(id)color
 {

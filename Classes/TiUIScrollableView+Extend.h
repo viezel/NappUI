@@ -4,9 +4,10 @@
  * www.napp.dk
  */
 
+#import "TiBase.h"
 #import "TiProxy.h"
 #import "TiUIScrollableView.h"
 
-@interface TiUIScrollableView (TiUIScrollableView_Extend)
+@interface TiUIScrollableView (Extend)
 
 @end
