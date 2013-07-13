@@ -7,7 +7,7 @@ This is not a set of new UI components. Instead, we are extending the existing f
 See this module as a collection of extended functionality. I did not invent all of the below functionality, but want to put these together in one united module. 
 
 
-## Add the module to your projectin
+## Add the module to your project
 
 Simply add the following lines to your `tiapp.xml` file:
     
