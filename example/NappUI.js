@@ -35,13 +35,13 @@ exports.init = function() {
 	var toolBar = Ti.UI.createToolbar();
 
 	// Lets remove this from memory
-	var win1 = null;
-	var tb1 = null;
-	var tabGr = null;
-	var textf = null;
-	var webV = null;
-	var SBar = null;
-	var scroV = null;
-	var picker = null;
-	var toolBar = null;
+	win1 = null;
+	tb1 = null;
+	tabGr = null;
+	textf = null;
+	webV = null;
+	SBar = null;
+	scroV = null;
+	picker = null;
+	toolBar = null;
 }
