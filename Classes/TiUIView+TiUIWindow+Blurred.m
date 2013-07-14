@@ -8,26 +8,29 @@
 
 @implementation TiUIView (WithShadow)
 
--(void)setBlurred_:(id)value {
-    if ([TiUtils boolValue:value]) {
-        [self.layer setRasterizationScale:0.5];
-        [self.layer setShouldRasterize:YES];    
-    } else {
-        [self.layer setRasterizationScale:1.0];
+-(void)setBlur_:(id)value {
+    CGFloat num = [TiUtils floatValue:value];
+    [self.layer setRasterizationScale:num];
+    
+    if (num == 1.0f) {
         [self.layer setShouldRasterize:NO];
+    } else {
+        [self.layer setShouldRasterize:YES];
     }
 }
+
 @end
 
 @implementation TiUIWindow (WindowWithShadow)
 
--(void)setBlurred_:(id)value {
-    if ([TiUtils boolValue:value]) {
-        [self.layer setRasterizationScale:0.5];
-        [self.layer setShouldRasterize:YES];    
-    } else {
-        [self.layer setRasterizationScale:1.0];
+-(void)setBlur_:(id)value {
+    CGFloat num = [TiUtils floatValue:value];
+    [self.layer setRasterizationScale:num];
+    
+    if (num == 1.0f) {
         [self.layer setShouldRasterize:NO];
+    } else {
+        [self.layer setShouldRasterize:YES];
     }
 }
 
