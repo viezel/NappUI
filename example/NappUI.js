@@ -16,6 +16,12 @@ exports.init = function() {
 		tabs : [tb1]
 	});
 	
+	// navGroup
+	var win2 = Ti.UI.createWindow();
+	var navGroup = Ti.UI.iPhone.createNavigationGroup({
+		window: win2
+	});
+	
 	// TextField
 	var textf = Ti.UI.createTextField();
 
@@ -32,12 +38,14 @@ exports.init = function() {
 	var picker = Ti.UI.createPicker();
 
 	// Toolbar
-	var toolBar = Ti.UI.createToolbar();
+	var toolBar = Ti.UI.iOS.createToolbar();
 
 	// Lets remove this from memory
 	win1 = null;
 	tb1 = null;
 	tabGr = null;
+	win2 = null;
+	navGroup = null;
 	textf = null;
 	webV = null;
 	SBar = null;
