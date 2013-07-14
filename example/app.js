@@ -7,13 +7,27 @@ NappUI.init();
 // NOW - Start using Napp UI
 
 var window = Ti.UI.createWindow({
-	backgroundColor:"#FFF"
+	backgroundColor:"#FFF",
+	blur:1
 });
+
+
+var blurSlider = Ti.UI.createSlider({
+	top : 120,
+	min : 0,
+	max : 1,
+	width : 280,
+	value : 1
+});
+blurSlider.addEventListener('touchend', function(e) {
+	window.setBlur(e.value);
+});
+window.add(blurSlider);
 
 var view = Ti.UI.createView({
 	backgroundColor: '#999',
     height: 50,
-     width: 50,
+    width: 50,
     shadow: {
         shadowColor: '#000',
         shadowRadius: 10,
@@ -44,45 +58,46 @@ picker.selectionIndicator = true;
 
 window.add(picker);
 window.add(view);
+window.open();
 
 
 /*
-// example of the pan gesture.. 
+// Navigation Group - popToRoot() test
 
-var image = Ti.UI.createImageView({
-    image:'/Default.png',
-    width:160,
-    height:240,
-    left:10,
-    top:10,
-    panGesture:true //custom property from Napp UI
+function makeWindowTest(){
+	count++;
+	var backToRoot = Ti.UI.createButton({title:"Get Back"});
+	backToRoot.addEventListener("click", letsGetAllBack);
+	
+	var newWin = Ti.UI.createWindow({
+		backgroundColor:"white",
+		title: "win " + count,
+		rightNavButton:backToRoot
+	});
+
+	var push = Ti.UI.createButton({title:"Push new window"});
+	push.addEventListener("click", makeWindowTest);
+	newWin.add(push);
+	navGroup.open(newWin);
+}
+function letsGetAllBack(){
+	navGroup.popToRoot();
+	count = 0;
+}
+var count = 0;
+var base = Ti.UI.createWindow();
+var win = Ti.UI.createWindow({
+	title:"win "+count, 
+	backgroundColor:"white"
 });
-window.add(image);
 
-var currentTranslation = {x:0.0, y:0.0};
-var lastTranslation = {x:0.0, y:0.0};
-
-function updateTransform(image){
-    var transform = Ti.UI.create2DMatrix();
-    transform.tx = lastTranslation.x+currentTranslation.x;
-    transform.ty = lastTranslation.y+currentTranslation.y;
-	image.transform = transform;
-};
-
-image.addEventListener('pan', function(e){
-	currentTranslation.x = e.translation.x;
-	currentTranslation.y = e.translation.y;
-	Ti.API.info("x: " + currentTranslation.x + " y: " + currentTranslation.y);
-	updateTransform(image);
+var push = Ti.UI.createButton({title:"Push new window"});
+push.addEventListener("click", makeWindowTest);
+win.add(push);
+var navGroup = Ti.UI.iPhone.createNavigationGroup({
+	window:win
 });
+base.add(navGroup);
+base.open();
 
-image.addEventListener('panend', function(e){
-    lastTranslation.x = lastTranslation.x + currentTranslation.x;
-    lastTranslation.y = lastTranslation.y + currentTranslation.y;
-    currentTranslation.x = 0.0;
-    currentTranslation.y = 0.0;
-});
 */
-
-
-window.open();
