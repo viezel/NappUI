@@ -29,10 +29,13 @@ NappUI.init();
 ### Window
 
 * Add a blur effect
+  * 1.0: No blur effect
+  * 0: Maximum blur effect
+
 
 ```javascript
 var win = Ti.UI.createWindow({
-    blurred:true
+    blur:0.2
 });
 ```
 
@@ -48,7 +51,7 @@ var view = Ti.UI.createView({
         shadowOpacity:1,
         shadowOffset:{x:2, y:2}
     },
-    blurred:true
+    blur:0.75
 });
 ```
 
@@ -197,7 +200,20 @@ var toolbar = Ti.UI.iOS.createToolbar({
 });
 ```
 
+### NavigationGroup
+
+* Close all windows in the navigationGroup, and return to the very first window in the group.
+
+```javascript
+navGroup.popToRoot();
+```
+
 ## Changelog
+
+
+* 1.0.3
+  * Added `popToRoot()` to extend NavigationGroup. Feature request [#3](https://github.com/viezel/NappUI/issues/3)
+  * Changed `setBlurred(true)` to `setBlur(0.2)`. Feature request [#1](https://github.com/viezel/NappUI/issues/1)
 
 * 1.0.2
   * Aded NappUI.js for better use of this module. This is due to some limitations of the Titanium mMdule SDK.
