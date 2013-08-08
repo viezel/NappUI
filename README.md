@@ -1,6 +1,6 @@
 # Napp UI
 
-This module extends the native UI componets provided by the Titanium Mobile SDK. We are more properties to a bunch of UI components, giving you more freedom for styling and functionality. 
+This module extends the native UI components provided by the Titanium Mobile SDK. We are more properties to a bunch of UI components, giving you more freedom for styling and functionality. 
 
 This is not a set of new UI components. Instead, we are extending the existing framework.
 
@@ -17,14 +17,15 @@ Simply add the following lines to your `tiapp.xml` file:
 
 ## How to use
 
-The following lists the UI components and its new extended functionality.
+Instantiate the module through ```require();```  This will modify and override the native Titanium classes with the NappUI methods.  
 
-Start by adding the NappUI.js to your project and add the following lines to the root of your project. (app.js) or (index.js for Alloy)
+Note: Creating a ```NappUI``` object is optional, but may be useful if methods, properties or custom proxy objects are defined.
 
 ```javascript
-var NappUI = require("NappUI");
-NappUI.init();
+var NappUI = require("dk.napp.ui");
 ```
+
+The following lists the UI components and its new extended functionality.
 
 ### Window
 
@@ -210,7 +211,9 @@ navGroup.popToRoot();
 
 ## Changelog
 
-
+* 1.0.4
+	* Removed the need for requiring NappUI.js.  Modifed the symbol preloader file to a module asset.  See ticket [5](https://github.com/viezel/NappUI/issues/5).
+	
 * 1.0.3
   * Added `popToRoot()` to extend NavigationGroup. Feature request [#3](https://github.com/viezel/NappUI/issues/3)
   * Changed `setBlurred(true)` to `setBlur(0.2)`. Feature request [#1](https://github.com/viezel/NappUI/issues/1)
