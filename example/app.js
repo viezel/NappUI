@@ -1,10 +1,6 @@
 
-// We need to use the NappUI.js to init this module
-var NappUI = require("NappUI");
-NappUI.init();
+var NappUI = require("dk.napp.ui");
 
-
-// NOW - Start using Napp UI
 
 var window = Ti.UI.createWindow({
 	backgroundColor:"#FFF",
