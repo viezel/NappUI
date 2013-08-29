@@ -33,14 +33,85 @@
         
         NSMutableDictionary *_attr = [[NSMutableDictionary alloc] init];
         
+        //FONT
         if([object valueForKey:@"font"] != nil) {
             [_attr setObject:[[TiUtils fontValue:[object valueForKey:@"font"]] font] forKey:NSFontAttributeName];
         }
         
+        //COLOR
         if([object valueForKey:@"color"] != nil) {
             [_attr setObject:[[TiUtils colorValue:[object valueForKey:@"color"]] _color] forKey:NSForegroundColorAttributeName];
         }
-
+        
+        //UNDERLINE
+        if([object valueForKey:@"underline"] != nil) {
+            int _uls = [[object valueForKey:@"underline"] integerValue];
+            NSUnderlineStyle *uls = nil;
+            
+            switch (_uls) {
+                case 0:
+                    uls = NSUnderlineStyleNone;
+                    break;
+                    
+                case 1:
+                    uls = NSUnderlineStyleSingle;
+                    break;
+                    
+                case 2:
+                    uls = NSUnderlineStyleDouble;
+                    break;
+                    
+                case 3:
+                    uls = NSUnderlineStyleThick;
+                    
+                default:
+                    break;
+            }
+            
+            if(uls != nil) {
+                [_attr setObject:[NSNumber numberWithInt:uls] forKey:NSUnderlineStyleAttributeName];
+            }
+            
+        }
+        
+        //SHADOW : Non-working implementation
+        /*if([object valueForKey:@"shadow"] != nil) {
+            
+            NSDictionary *shadowObject = [object valueForKey:@"shadow"];
+            
+            NSShadow *shadow = [[NSShadow alloc] init];
+            
+            //Shadow Color
+            UIColor *shadowColor = [[TiUtils colorValue:[shadowObject objectForKey:@"shadowColor"]] _color];
+            [shadow setShadowColor:(shadowColor != nil)?shadowColor:[UIColor blackColor]];
+            
+            //Shadow Offset
+            
+            if([shadowObject objectForKey:@"shadowOffset"] != nil) {
+                CGPoint p = [TiUtils pointValue:[shadowObject objectForKey:@"shadowOffset"]];
+                CGSize shadowOffset = {p.x,p.y};
+                [shadow setShadowOffset:shadowOffset];
+            }
+            else {
+                CGSize shadowOffset = {0.0,0.0};
+                [shadow setShadowOffset:shadowOffset];
+            }
+            
+            //Shadow Blur Radius
+            if([object valueForKey:@"shadowRadius"] != nil) {
+                CGFloat shadowRadius = [[object valueForKey:@"shadowRadius"] floatValue];
+                [shadow setShadowBlurRadius:shadowRadius];
+            }
+            else {
+                CGFloat shadowRadius = 1.0;
+                [shadow setShadowBlurRadius:shadowRadius];
+            }
+            
+            [_attr setObject:shadow forKey:NSShadowAttributeName];
+            
+        }*/
+        
+        //Setting it all up
         [attrS setAttributes:_attr range:range];
         
         [_attr release];
@@ -48,6 +119,7 @@
         
     }
     
+    //Set the text. Notify the proxy about contentChange
     [[self label] setAttributedText:attrS];
     [(TiViewProxy *)[self proxy] contentsWillChange];
 }
