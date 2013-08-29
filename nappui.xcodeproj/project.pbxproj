@@ -49,6 +49,8 @@
 		B6080C0D179048ED00A05964 /* TiUIView+WithShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C13D177C79AF0069CD29 /* TiUIView+WithShadow.m */; };
 		B6080C0E179048ED00A05964 /* TiUIWebView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C13F177C79AF0069CD29 /* TiUIWebView+Extend.m */; };
 		B6655F42177C506F004E2E16 /* DkNappUiModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* DkNappUiModuleAssets.h */; };
+		B674C26B17CFD43F002D6D9B /* TiUILabel+Extend.h in Headers */ = {isa = PBXBuildFile; fileRef = B674C26917CFD43F002D6D9B /* TiUILabel+Extend.h */; };
+		B674C26C17CFD43F002D6D9B /* TiUILabel+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B674C26A17CFD43F002D6D9B /* TiUILabel+Extend.m */; };
 		B679C0DB177C732E0069CD29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B679C0D9177C73250069CD29 /* UIKit.framework */; };
 		B679C158177C79D90069CD29 /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B679C156177C79D90069CD29 /* JRSwizzle.h */; };
 		B679C159177C79D90069CD29 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C157177C79D90069CD29 /* JRSwizzle.m */; };
@@ -75,6 +77,8 @@
 		24DE9E1011C5FE74003F90F6 /* DkNappUiModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DkNappUiModuleAssets.m; path = Classes/DkNappUiModuleAssets.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* DkNappUi_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DkNappUi_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B674C26917CFD43F002D6D9B /* TiUILabel+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUILabel+Extend.h"; path = "Classes/TiUILabel+Extend.h"; sourceTree = "<group>"; };
+		B674C26A17CFD43F002D6D9B /* TiUILabel+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUILabel+Extend.m"; path = "Classes/TiUILabel+Extend.m"; sourceTree = "<group>"; };
 		B679C0D9177C73250069CD29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B679C12A177C79AE0069CD29 /* TiUIiOSToolbarProxy+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUIiOSToolbarProxy+Extended.h"; path = "Classes/TiUIiOSToolbarProxy+Extended.h"; sourceTree = "<group>"; };
 		B679C12B177C79AE0069CD29 /* TiUIiOSToolbarProxy+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUIiOSToolbarProxy+Extended.m"; path = "Classes/TiUIiOSToolbarProxy+Extended.m"; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 				B679C157177C79D90069CD29 /* JRSwizzle.m */,
 				B679C12A177C79AE0069CD29 /* TiUIiOSToolbarProxy+Extended.h */,
 				B679C12B177C79AE0069CD29 /* TiUIiOSToolbarProxy+Extended.m */,
+				B674C26917CFD43F002D6D9B /* TiUILabel+Extend.h */,
+				B674C26A17CFD43F002D6D9B /* TiUILabel+Extend.m */,
 				B679C12C177C79AE0069CD29 /* TiUIPicker+Extended.h */,
 				B679C12D177C79AE0069CD29 /* TiUIPicker+Extended.m */,
 				B679C12E177C79AE0069CD29 /* TiUIScrollableView+Extend.h */,
@@ -217,6 +223,7 @@
 				B6080C02179048DA00A05964 /* TiUIView+WithShadow.h in Headers */,
 				B6080C03179048DA00A05964 /* TiUIWebView+Extend.h in Headers */,
 				B6A113281793249C0017AEF2 /* TiUIiPhoneNavigationGroupProxy+Extended.h in Headers */,
+				B674C26B17CFD43F002D6D9B /* TiUILabel+Extend.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +309,7 @@
 				B6080C0D179048ED00A05964 /* TiUIView+WithShadow.m in Sources */,
 				B6080C0E179048ED00A05964 /* TiUIWebView+Extend.m in Sources */,
 				B6A113291793249C0017AEF2 /* TiUIiPhoneNavigationGroupProxy+Extended.m in Sources */,
+				B674C26C17CFD43F002D6D9B /* TiUILabel+Extend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

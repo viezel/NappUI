@@ -52,6 +52,53 @@ picker.add(data);
 picker.selectionIndicator = true;
 
 
+var string = "Hello world. This is an addition by @dezinezync #winning. Coming soon to the NappUI module.";
+
+var label = Ti.UI.createLabel({
+	width: 290,
+    top: 15,
+	left: 15,
+    text: string,
+    font: {
+		fontFamily: "Avenir-Roman",
+		fontSize: 16
+	},
+    attributedText: {
+    	text: string,
+    	attributes: [{
+			text: "@dezinezync",
+    		font: {
+    			fontFamily: "Avenir-Medium",
+    			fontSize: 16
+    		},
+    		color: "#6161f2"
+    	}, {
+    		text: "#winning",
+    		font: {
+    			fontFamily: "Avenir-Light",
+    			fontSize: 16
+    		},
+    		color: "blue"
+    	}, {
+    		text: "NappUI module",
+    		font: {
+    			fontFamily: "Helvetica",
+    			fontSize: 16,
+    			fontWeight: "bold"
+    		}
+    	}, {
+    		text: "Coming",
+    		underline: 1
+    	}, {
+    		text: "soon",
+    		underline: 2
+    	}]
+    }
+});
+
+window.add(label);
+
+
 window.add(picker);
 window.add(view);
 window.open();

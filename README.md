@@ -201,6 +201,7 @@ var toolbar = Ti.UI.iOS.createToolbar({
 });
 ```
 
+
 ### NavigationGroup
 
 * Close all windows in the navigationGroup, and return to the very first window in the group.
@@ -209,7 +210,47 @@ var toolbar = Ti.UI.iOS.createToolbar({
 navGroup.popToRoot();
 ```
 
+
+### Label
+
+* attributed Text
+
+~~~~
+var string = "This is an example string";
+
+var label = Ti.UI.createLabel({
+	width: Ti.UI.FILL,
+    text: string,
+    font: {
+		fontFamily: "Avenir-Roman",
+		fontSize: 16
+	},
+	attributedText: {
+		text: string, // String
+		attributes: [ // Array
+			{			// Object
+				text: "example",
+				color: "blue"
+			},
+			{
+				text: "string",
+				font: {
+    				fontFamily: "Avenir-Medium",
+    				fontSize: 16
+    			}
+			}
+		]			 	
+	}
+});
+
+win.add(label);
+~~~~
+
+A more extensive example is included in `/example/app.js`
+
 ## Changelog
+* 1.1
+	* Attributed Text for TiUILabel - by @dezinezync 
 
 * 1.0.4
 	* Removed the need for requiring NappUI.js.  Modifed the symbol preloader file to a module asset.  See ticket [5](https://github.com/viezel/NappUI/issues/5).
