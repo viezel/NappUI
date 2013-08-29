@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>19FC1D20-BB10-4912-8979-59512A62CA11</string>
+	<key>IDESourceControlProjectName</key>
+	<string>nappui</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>705F5482-65D2-41EB-8ED3-20E322EFB3F1</key>
+		<string>https://github.com/dezinezync/NappUI</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>nappui.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>705F5482-65D2-41EB-8ED3-20E322EFB3F1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/dezinezync/NappUI</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>705F5482-65D2-41EB-8ED3-20E322EFB3F1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>705F5482-65D2-41EB-8ED3-20E322EFB3F1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>NappUI</string>
+		</dict>
+	</array>
+</dict>
+</plist>

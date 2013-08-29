@@ -50,6 +50,8 @@
 		B69F74EB17764073007F0490 /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B263D61742E3670016A667 /* JRSwizzle.h */; };
 		B69F74EC17764076007F0490 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263D71742E3670016A667 /* JRSwizzle.m */; };
 		B69F74ED17764572007F0490 /* TiUIPicker+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B263DA1742E3670016A667 /* TiUIPicker+Extended.m */; };
+		F05E22E617CF58E000713220 /* TiUILabel+Extend.h in Headers */ = {isa = PBXBuildFile; fileRef = F05E22E417CF58E000713220 /* TiUILabel+Extend.h */; };
+		F05E22E717CF58E000713220 /* TiUILabel+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = F05E22E517CF58E000713220 /* TiUILabel+Extend.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		B6B263E11742E3820016A667 /* TiUIView+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUIView+Animation.h"; sourceTree = "<group>"; };
 		B6B263E21742E3820016A667 /* TiUIView+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUIView+Animation.m"; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libDkNappUi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDkNappUi.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F05E22E417CF58E000713220 /* TiUILabel+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiUILabel+Extend.h"; sourceTree = "<group>"; };
+		F05E22E517CF58E000713220 /* TiUILabel+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiUILabel+Extend.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +197,8 @@
 				B69F74D117761F6C007F0490 /* TiUIWebView+Extend.m */,
 				B69F74D417761F9F007F0490 /* TiUIScrollableView+Extend.h */,
 				B69F74D517761F9F007F0490 /* TiUIScrollableView+Extend.m */,
+				F05E22E417CF58E000713220 /* TiUILabel+Extend.h */,
+				F05E22E517CF58E000713220 /* TiUILabel+Extend.m */,
 			);
 			name = Ti;
 			path = Classes/Ti;
@@ -211,6 +217,7 @@
 				B69F74E217763F36007F0490 /* TiUITextField+Extended.h in Headers */,
 				B69F74E517763F46007F0490 /* TiUIView+Gestures.h in Headers */,
 				B69F74E917763F7F007F0490 /* TiUIView+Animation.h in Headers */,
+				F05E22E617CF58E000713220 /* TiUILabel+Extend.h in Headers */,
 				B69F74DF17763F0B007F0490 /* TiUIPicker+Extended.h in Headers */,
 				B69F74E817763F5E007F0490 /* TiUIScrollableView+Extend.h in Headers */,
 				B69F74E617763F54007F0490 /* TiUIView+TiUIWindow+Blurred.h in Headers */,
@@ -246,6 +253,8 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "nappui" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -295,6 +304,7 @@
 				B69F74ED17764572007F0490 /* TiUIPicker+Extended.m in Sources */,
 				B69F74D717761F9F007F0490 /* TiUIScrollableView+Extend.m in Sources */,
 				B672232A175620090074146C /* TiUIView+TiUIWindow+Blurred.m in Sources */,
+				F05E22E717CF58E000713220 /* TiUILabel+Extend.m in Sources */,
 				B69F74D317761F6C007F0490 /* TiUIWebView+Extend.m in Sources */,
 				B69F74DC17763EFB007F0490 /* TiUIView+WithShadow.m in Sources */,
 				B69F74E117763F34007F0490 /* TiUISearchBar+Extended.m in Sources */,
