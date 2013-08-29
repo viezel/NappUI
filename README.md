@@ -190,7 +190,46 @@ var toolbar = Ti.UI.iOS.createToolbar({
 });
 ```
 
+### Label
+
+* attributed Text
+
+~~~~
+var string = "This is an example string";
+
+var label = Ti.UI.createLabel({
+	width: Ti.UI.FILL,
+    text: string,
+    font: {
+		fontFamily: "Avenir-Roman",
+		fontSize: 16
+	},
+	attributedText: {
+		text: string, // String
+		attributes: [ // Array
+			{			// Object
+				text: "example",
+				color: "blue"
+			},
+			{
+				text: "string",
+				font: {
+    				fontFamily: "Avenir-Medium",
+    				fontSize: 16
+    			}
+			}
+		]			 	
+	}
+});
+
+win.add(label);
+~~~~
+
+A more extensive example is included in `/example/app.js`
+
 ## Changelog
+* 1.1
+	* Attributed Text for TiUILabel - by @dezinezync 
 
 * 1.0.1
   * Bugfix - invalid build, and some functions did not work as expected. 
