@@ -40,37 +40,28 @@
         
         //COLOR
         if([object valueForKey:@"color"] != nil) {
-            [_attr setObject:[[TiUtils colorValue:[object valueForKey:@"color"]] _color] forKey:NSForegroundColorAttributeName];
+            
+            UIColor *textColor = [[TiUtils colorValue:[object valueForKey:@"color"]] _color];
+            
+            [_attr setObject:(textColor !=nil)?textColor:[UIColor darkTextColor] forKey:NSForegroundColorAttributeName];
         }
         
         //UNDERLINE
         if([object valueForKey:@"underline"] != nil) {
-            int _uls = [[object valueForKey:@"underline"] integerValue];
-            NSUnderlineStyle *uls = nil;
+            int *uls = [[object valueForKey:@"underline"] integerValue];
             
-            switch (_uls) {
-                case 0:
-                    uls = NSUnderlineStyleNone;
-                    break;
-                    
-                case 1:
-                    uls = NSUnderlineStyleSingle;
-                    break;
-                    
-                case 2:
-                    uls = NSUnderlineStyleDouble;
-                    break;
-                    
-                case 3:
-                    uls = NSUnderlineStyleThick;
-                    
-                default:
-                    break;
-            }
-            
-            if(uls != nil) {
+            if(uls != NULL) {
                 [_attr setObject:[NSNumber numberWithInt:uls] forKey:NSUnderlineStyleAttributeName];
             }
+            
+        }
+        
+        //BACKGROUND
+        if([object valueForKey:@"backgroundColor"] != nil) {
+            
+            UIColor *bgColor = [[TiUtils colorValue:[object valueForKey:@"backgroundColor"]] _color];
+            
+            [_attr setObject:(bgColor !=nil)?bgColor:[UIColor lightGrayColor] forKey:NSBackgroundColorAttributeName];
             
         }
         

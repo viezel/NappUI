@@ -82,16 +82,26 @@ var label = Ti.UI.createLabel({
     	}, {
     		text: "NappUI module",
     		font: {
-    			fontFamily: "Helvetica",
-    			fontSize: 16,
-    			fontWeight: "bold"
+    			fontFamily: "HelveticaNeue-Bold",
+    			fontSize: 16
     		}
     	}, {
     		text: "Coming",
-    		underline: 1
+    		underline: 1, //single line,
+    		font: {
+    			fontFamily: "HelveticaNeue-BoldItalic",
+    			// fontSize will get inheirted from the parent style
+    		}
     	}, {
     		text: "soon",
-    		underline: 2
+    		underline: 2 //double line
+    	}, {
+    		text: "to",
+    		underline: 3 //bold line
+    	}, {
+    		text: "the",
+    		underline: 4, //bold(er) line
+    		backgroundColor: "#aaaaaa"
     	}]
     }
 });
