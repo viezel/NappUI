@@ -45,30 +45,9 @@
         
         //UNDERLINE
         if([object valueForKey:@"underline"] != nil) {
-            int _uls = [[object valueForKey:@"underline"] integerValue];
-            NSUnderlineStyle *uls = nil;
+            int *uls = [[object valueForKey:@"underline"] integerValue];
             
-            switch (_uls) {
-                case 0:
-                    uls = NSUnderlineStyleNone;
-                    break;
-                    
-                case 1:
-                    uls = NSUnderlineStyleSingle;
-                    break;
-                    
-                case 2:
-                    uls = NSUnderlineStyleDouble;
-                    break;
-                    
-                case 3:
-                    uls = NSUnderlineStyleThick;
-                    
-                default:
-                    break;
-            }
-            
-            if(uls != nil) {
+            if(uls != NULL) {
                 [_attr setObject:[NSNumber numberWithInt:uls] forKey:NSUnderlineStyleAttributeName];
             }
             
@@ -122,6 +101,11 @@
     //Set the text. Notify the proxy about contentChange
     [[self label] setAttributedText:attrS];
     [(TiViewProxy *)[self proxy] contentsWillChange];
+}
+
+/* From TiUtils.h. Available from 3.1.2.GA. We can safely remove it when we upgrade the module's base SDK version */
+-(BOOL)isIOS7 {
+    return [UIViewController instancesRespondToSelector:@selector(childViewControllerForStatusBarStyle)];
 }
 
 @end

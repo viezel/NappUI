@@ -104,21 +104,17 @@ var label = Ti.UI.createLabel({
     		}
     	}, {
     		text: "Coming",
-    		underline: 1
+    		underline: 1 //single line
     	}, {
     		text: "soon",
-    		underline: 2
-    	}/*, { //Currently not working. I'll look into it's implementation
-    		text: "addition",
-    		shadow: {
-    			shadowColor: "green", // Green shadow. Hmm... :S
-    			shadowOffset: {
-    				x: 0,
-    				y: 1
-    			},
-    			shadowRadius: 1
-    		}
-    	}*/]
+    		underline: 2 //double line
+    	}, {
+    		text: "to",
+    		underline: 3 //bold line
+    	}, {
+    		text: "the",
+    		underline: 4 //bold(er) line
+    	}]
     }
 });
 
