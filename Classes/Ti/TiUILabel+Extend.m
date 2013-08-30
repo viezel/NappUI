@@ -40,7 +40,10 @@
         
         //COLOR
         if([object valueForKey:@"color"] != nil) {
-            [_attr setObject:[[TiUtils colorValue:[object valueForKey:@"color"]] _color] forKey:NSForegroundColorAttributeName];
+            
+            UIColor *textColor = [[TiUtils colorValue:[object valueForKey:@"color"]] _color];
+            
+            [_attr setObject:(textColor !=nil)?textColor:[UIColor darkTextColor] forKey:NSForegroundColorAttributeName];
         }
         
         //UNDERLINE
@@ -50,6 +53,15 @@
             if(uls != NULL) {
                 [_attr setObject:[NSNumber numberWithInt:uls] forKey:NSUnderlineStyleAttributeName];
             }
+            
+        }
+        
+        //BACKGROUND
+        if([object valueForKey:@"backgroundColor"] != nil) {
+            
+            UIColor *bgColor = [[TiUtils colorValue:[object valueForKey:@"backgroundColor"]] _color];
+            
+            [_attr setObject:(bgColor !=nil)?bgColor:[UIColor lightGrayColor] forKey:NSBackgroundColorAttributeName];
             
         }
         
@@ -101,11 +113,6 @@
     //Set the text. Notify the proxy about contentChange
     [[self label] setAttributedText:attrS];
     [(TiViewProxy *)[self proxy] contentsWillChange];
-}
-
-/* From TiUtils.h. Available from 3.1.2.GA. We can safely remove it when we upgrade the module's base SDK version */
--(BOOL)isIOS7 {
-    return [UIViewController instancesRespondToSelector:@selector(childViewControllerForStatusBarStyle)];
 }
 
 @end
