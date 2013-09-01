@@ -10,9 +10,33 @@
 
 #import "TiUILabel+Extend.h"
 #import "TiUtils.h"
+#import <objc/runtime.h>
 #import <CoreText/CoreText.h>
 
+static char highlightedRange;
+static char highlightColor;
+
 @implementation TiUILabel (Extend)
+
+-(NSString *)highlightedRange
+{
+    return objc_getAssociatedObject(self, &highlightedRange);
+}
+
+-(void)setHighlightedRange:(NSString *)range
+{
+    objc_setAssociatedObject(self, &highlightedRange, range, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(UIColor *)highlightColor
+{
+    return objc_getAssociatedObject(self, &highlightColor);
+}
+
+-(void)setHighlightColor:(UIColor *)color
+{
+    objc_setAssociatedObject(self, &highlightColor, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 -(void)setAttributedText_:(id)args
 {
@@ -29,6 +53,15 @@
     NSString *text = [TiUtils stringValue:[args objectForKey:@"text"]]; //Grabs the text
     if([args objectForKey:@"color"]) {
         _labelColor = [[TiUtils colorValue:[args objectForKey:@"color"]] _color]; //Grabs the color if set
+    }
+    
+    //Checks if there is a highlight color and set's it.
+    if([args objectForKey:@"highlightColor"])
+    {
+        [self setHighlightColor:[[TiUtils colorValue:[args objectForKey:@"highlightColor"]] _color]];
+    }
+    else {
+        [self setHighlightColor:[UIColor lightGrayColor]];
     }
     
     NSMutableAttributedString *attrS = [[NSMutableAttributedString alloc] initWithString:text];
@@ -205,6 +238,76 @@
     
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    if(![self.proxy _hasListeners:@"url"]) {
+        return;
+    }
+    
+    NSSet *allTouches = [event allTouches];
+    
+    if ([allTouches count] == 1)
+    {
+        UITouch *touch = (UITouch *)[allTouches anyObject];
+        CGPoint touchPoint = [touch locationInView:self];
+        
+        // Convert to coordinate system of current view
+        touchPoint.y -= self.bounds.size.height;
+        touchPoint.y *= -1;
+        
+        if(CGRectContainsPoint(self.bounds, touchPoint)) {
+            
+            CFIndex index = [self characterIndexAtPoint:touchPoint];
+            
+            NSDictionary *attrs = [label.attributedText attributesAtIndex:index effectiveRange:NULL];
+            if(attrs != nil && [attrs valueForKey:@"link"] != nil)
+            {
+                
+                [self highlightWordContainingCharacterAtIndex:index];
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if(![self.proxy _hasListeners:@"url"]) {
+        return;
+    }
+    
+    NSSet *allTouches = [event allTouches];
+    
+    if ([allTouches count] == 1)
+    {
+        UITouch *touch = (UITouch *)[allTouches anyObject];
+        CGPoint touchPoint = [touch locationInView:self];
+        
+        // Convert to coordinate system of current view
+        touchPoint.y -= self.bounds.size.height;
+        touchPoint.y *= -1;
+        
+        if(CGRectContainsPoint(self.bounds, touchPoint)) {
+            
+            CFIndex index = [self characterIndexAtPoint:touchPoint];
+            
+            NSDictionary *attrs = [label.attributedText attributesAtIndex:index effectiveRange:NULL];
+            if(attrs != nil && [attrs valueForKey:@"link"] != nil)
+            {
+
+                [self highlightWordContainingCharacterAtIndex:index];
+            
+            }
+            
+        }
+        
+    }
+    
+}
+
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //If we don't have an event listener
@@ -213,6 +316,8 @@
     if(![self.proxy _hasListeners:@"url"]) {
         return;
     }
+    
+    [self removeHighlight];
     
     NSSet *allTouches = [event allTouches];
     
@@ -244,6 +349,11 @@
     
 }
 
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self removeHighlight];
+}
+
 /*
  * The following code has been adapted from
  * PPLabel by petrpavlik
@@ -251,6 +361,91 @@
  * this module wherever required.
  * https://github.com/petrpavlik/PPLabel/blob/master/PPLabel/PPLabel.m
  */
+
+- (void)highlightWordContainingCharacterAtIndex:(CFIndex)charIndex
+{
+    if (charIndex==NSNotFound) {
+        
+        //user did nat click on any word
+        [self removeHighlight];
+        return;
+    }
+    
+    NSString* string = label.text;
+    
+    //get the start and end positions
+    NSRange end = [string rangeOfString:@" " options:0 range:NSMakeRange(charIndex, string.length - charIndex)];
+    NSRange start = [string rangeOfString:@" " options:NSBackwardsSearch range:NSMakeRange(0, charIndex)];
+    
+    if (start.location == NSNotFound) {
+        //We have the first word.
+        start.location = 0;
+    }
+    
+    if (end.location == NSNotFound) {
+        //We have the last word
+        end.location = string.length-1;
+    }
+    
+    NSRange rangeForWord = NSMakeRange(start.location, end.location - start.location);
+    
+    //Fix word trimming
+    if (start.location!=0) {
+        rangeForWord.location += 1;
+        rangeForWord.length -= 1;
+    }
+    
+    //Check if have a word that is highlighted
+    NSRange hr = NSRangeFromString(self.highlightedRange);
+    
+    if(hr.location != NSNotFound) {
+        //We have a highlighted word
+        
+        //Check if the word is already highlighed
+        if(rangeForWord.location == hr.location && rangeForWord.length == hr.length)
+        {
+            return;
+        }
+        else
+        {
+            [self removeHighlight];
+        }
+        
+    }
+    
+    //Highlight the word
+    NSMutableAttributedString* attributedString = [label.attributedText mutableCopy];
+    NSDictionary *d = [attributedString attributesAtIndex:rangeForWord.location effectiveRange:NULL];
+    UIColor *preColor = [d objectForKey:NSForegroundColorAttributeName];
+    
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:rangeForWord];
+    [attributedString addAttribute:@"preColor" value:preColor range:rangeForWord];
+    label.attributedText = attributedString;
+    
+    [self setHighlightedRange:NSStringFromRange(rangeForWord)];
+    
+}
+
+- (void)removeHighlight {
+    
+    NSRange range = NSRangeFromString(self.highlightedRange);
+    
+    if (range.location != NSNotFound) {
+        
+        //remove highlight from previously selected word
+        NSMutableAttributedString* attributedString = [label.attributedText mutableCopy];
+        NSDictionary *d = [attributedString attributesAtIndex:range.location effectiveRange:NULL];
+        UIColor *preColor = [d objectForKey:@"preColor"];
+        
+        [attributedString removeAttribute:@"preColor" range:range];
+        
+        [attributedString addAttribute:NSForegroundColorAttributeName value:preColor range:range];
+        label.attributedText = attributedString;
+        
+        self.highlightedRange = NSStringFromRange(NSMakeRange(NSNotFound, 0));
+    }
+    
+}
 
 - (CFIndex)characterIndexAtPoint:(CGPoint)point {
     

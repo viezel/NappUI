@@ -84,6 +84,7 @@ var label = Ti.UI.createLabel({
 	attributedText: {
     	text: string,
     	color: '#757572',
+    	highlightColor: "#6060bf",
 
     	attributes: [/*{
     		text: "Hello world.",
