@@ -1,1 +1,1 @@
-OTHER_LDFLAGS=$(inherited) -framework QuartzCore
+OTHER_LDFLAGS=$(inherited) -framework QuartzCore -framework CoreText

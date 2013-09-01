@@ -249,7 +249,15 @@ win.add(label);
 A more extensive example is included in `/example/app.js`
 
 ## Changelog
-* 1.1
+
+* 1.1.2 (AT)
+	* Set range instead of text when defining attributes. Range can be useful when you get a predefined range eg. Twitter API
+	* Links: Set links on specific text/range and listen to a tap event.
+* 1.1.1 (AT)
+	* Bug Fixes
+	* Set base color for the text
+	
+* 1.1 (AT)
 	* Attributed Text for TiUILabel - by @dezinezync 
 
 * 1.0.4

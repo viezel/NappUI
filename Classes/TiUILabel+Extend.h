@@ -12,8 +12,6 @@
 #import "TiUILabel.h"
 #import "TiUILabelProxy.h"
 
-@interface TiUILabel (Extend) {
-
-}
-
+@interface TiUILabel (Extend)
+    
 @end
