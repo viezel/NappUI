@@ -143,17 +143,35 @@ var label = Ti.UI.createLabel({
 
 //If you're assigning links, you might want to add this event
 
-label.addEventListener('click', function() {}); 
+//label.addEventListener('click', function() {}); 
 //If you forget setting this, you won't be able to catch the url event.
 
 label.addEventListener('url', function(e) {
+
 	if(e.url) {
+		
 		Ti.API.info("Got URL");
 
 		if(Ti.Platform.canOpenURL(e.url)) {
 			Ti.Platform.openURL(e.url);
 		}
+
 	}
+
+});
+
+label.addEventListener('longpress', function(e) {
+
+	if(e.url) {
+
+		Ti.API.info("Got URL: LongPressed");
+
+		if(Ti.Platform.canOpenURL(e.url)) {
+			Ti.Platform.openURL(e.url);
+		}
+
+	}
+
 });
 
 window.add(label);

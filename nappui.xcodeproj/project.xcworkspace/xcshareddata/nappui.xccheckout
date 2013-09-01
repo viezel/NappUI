@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>19FC1D20-BB10-4912-8979-59512A62CA11</string>
+	<string>2B3B55CC-1019-4526-B491-47392151059E</string>
 	<key>IDESourceControlProjectName</key>
 	<string>nappui</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>705F5482-65D2-41EB-8ED3-20E322EFB3F1</key>
-		<string>https://github.com/dezinezync/NappUI</string>
+		<key>311142B0-9B13-4F23-B87F-39BE74D4D7DC</key>
+		<string>https://github.com/viezel/NappUI.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>nappui.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>705F5482-65D2-41EB-8ED3-20E322EFB3F1</key>
+		<key>311142B0-9B13-4F23-B87F-39BE74D4D7DC</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/dezinezync/NappUI</string>
+	<string>https://github.com/viezel/NappUI.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>705F5482-65D2-41EB-8ED3-20E322EFB3F1</string>
+	<string>311142B0-9B13-4F23-B87F-39BE74D4D7DC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>705F5482-65D2-41EB-8ED3-20E322EFB3F1</string>
+			<string>311142B0-9B13-4F23-B87F-39BE74D4D7DC</string>
 			<key>IDESourceControlWCCName</key>
 			<string>NappUI</string>
 		</dict>

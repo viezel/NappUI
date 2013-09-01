@@ -21,6 +21,8 @@
         return;
     }
     
+    BOOL lpEV = NO;
+    
     UILabel *_label = [self label];
     UIColor *_labelColor = [UIColor darkTextColor];
     
@@ -102,6 +104,18 @@
             //We can easily fetch it later.
             [_attr setObject:[object valueForKey:@"link"] forKey:@"link"];
             
+            if(!lpEV) {
+                lpEV = YES;
+                
+                UIGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(longpressOnWord:)];
+                
+                [label  addGestureRecognizer:longPress];
+                [label setUserInteractionEnabled:TRUE];
+                
+            }
+            
         }
         
         //SHADOW : Non-working implementation
@@ -156,6 +170,41 @@
 
 }
 
+-(void)longpressOnWord:(UILongPressGestureRecognizer *)gesture
+{
+    //If we don't have an event listener
+    //Do nothing. Save processing power. ;)
+    
+    if(![self.proxy _hasListeners:@"longpress"]) {
+        return;
+    }
+    
+    if(gesture.state == UIGestureRecognizerStateBegan) {
+        
+        CGPoint touchPoint = [gesture locationOfTouch:0 inView:gesture.view];
+        // Convert to coordinate system of current view
+        touchPoint.y -= self.bounds.size.height;
+        touchPoint.y *= -1;
+        
+        if(CGRectContainsPoint(self.bounds, touchPoint)) {
+            
+            CFIndex index = [self characterIndexAtPoint:touchPoint];
+            
+            NSDictionary *attrs = [label.attributedText attributesAtIndex:index effectiveRange:NULL];
+            if(attrs != nil && [attrs valueForKey:@"link"] != nil)
+            {
+                
+                NSString *link = [TiUtils stringValue:[attrs valueForKey:@"link"]];
+                [self.proxy fireEvent:@"longpress" withObject:@{@"url": link}];
+                
+            }
+            
+        }
+        
+    }
+    
+}
+
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //If we don't have an event listener
@@ -176,14 +225,18 @@
         touchPoint.y -= self.bounds.size.height;
         touchPoint.y *= -1;
         
-        CFIndex index = [self characterIndexAtPoint:touchPoint];
-        
-        NSDictionary *attrs = [label.attributedText attributesAtIndex:index effectiveRange:NULL];
-        if(attrs != nil && [attrs valueForKey:@"link"] != nil)
-        {
+        if(CGRectContainsPoint(self.bounds, touchPoint)) {
          
-            NSString *link = [TiUtils stringValue:[attrs valueForKey:@"link"]];
-            [self.proxy fireEvent:@"url" withObject:@{@"url": link}];
+            CFIndex index = [self characterIndexAtPoint:touchPoint];
+            
+            NSDictionary *attrs = [label.attributedText attributesAtIndex:index effectiveRange:NULL];
+            if(attrs != nil && [attrs valueForKey:@"link"] != nil)
+            {
+                
+                NSString *link = [TiUtils stringValue:[attrs valueForKey:@"link"]];
+                [self.proxy fireEvent:@"url" withObject:@{@"url": link}];
+                
+            }
             
         }
         
