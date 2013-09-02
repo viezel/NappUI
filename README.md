@@ -249,6 +249,9 @@ win.add(label);
 A more extensive example is included in `/example/app.js`
 
 ## Changelog
+* 1.1.3 (AT)
+	* Highlight color for links
+	* Fixed a bug that would cause the application to crash if the user moved the touch point outside the label's bounds
 
 * 1.1.3
     * Attributed Text: Highlight links when selected
