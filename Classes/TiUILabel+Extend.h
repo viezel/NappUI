@@ -12,8 +12,7 @@
 #import "TiUILabel.h"
 #import "TiUILabelProxy.h"
 
-@interface TiUILabel (Extend) {
-
-}
-
+@interface TiUILabel (Extend)
+    @property(nonatomic, retain) NSString *highlightedRange;
+    @property(nonatomic, retain) UIColor *highlightColor;
 @end
