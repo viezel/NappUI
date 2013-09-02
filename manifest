@@ -3,7 +3,7 @@
 # during compilation, packaging, distribution, etc.
 #
 
-version: 1.1.2
+version: 1.1.3
 apiversion: 2
 description: Napp UI
 author: Mads Møller
