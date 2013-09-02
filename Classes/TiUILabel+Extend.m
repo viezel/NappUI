@@ -418,7 +418,7 @@ static char highlightColor;
     NSDictionary *d = [attributedString attributesAtIndex:rangeForWord.location effectiveRange:NULL];
     UIColor *preColor = [d objectForKey:NSForegroundColorAttributeName];
     
-    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:rangeForWord];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:self.highlightColor range:rangeForWord];
     [attributedString addAttribute:@"preColor" value:preColor range:rangeForWord];
     label.attributedText = attributedString;
     
