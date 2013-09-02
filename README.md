@@ -250,6 +250,10 @@ A more extensive example is included in `/example/app.js`
 
 ## Changelog
 
+* 1.1.3
+    * Attributed Text: Highlight links when selected
+    * Attributed Text: LongPress event
+
 * 1.1.2 
 	* Attributed Text: Set range instead of text when defining attributes. Range can be useful when you get a predefined range eg. Twitter API
 	* Attributed Text Links: Set links on specific text/range and listen to a tap event.
