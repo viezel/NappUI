@@ -250,14 +250,15 @@ A more extensive example is included in `/example/app.js`
 
 ## Changelog
 
-* 1.1.2 (AT)
-	* Set range instead of text when defining attributes. Range can be useful when you get a predefined range eg. Twitter API
-	* Links: Set links on specific text/range and listen to a tap event.
-* 1.1.1 (AT)
-	* Bug Fixes
-	* Set base color for the text
+* 1.1.2 
+	* Attributed Text: Set range instead of text when defining attributes. Range can be useful when you get a predefined range eg. Twitter API
+	* Attributed Text Links: Set links on specific text/range and listen to a tap event.
 	
-* 1.1 (AT)
+* 1.1.1 
+	* Attributed Text: Bug Fixes
+	* Attributed Text: Set base color for the text
+	
+* 1.1 
 	* Attributed Text for TiUILabel - by @dezinezync 
 
 * 1.0.4
@@ -268,7 +269,7 @@ A more extensive example is included in `/example/app.js`
   * Changed `setBlurred(true)` to `setBlur(0.2)`. Feature request [#1](https://github.com/viezel/NappUI/issues/1)
 
 * 1.0.2
-  * Aded NappUI.js for better use of this module. This is due to some limitations of the Titanium mMdule SDK.
+  * Aded NappUI.js for better use of this module. This is due to some limitations of the Titanium Module SDK.
 
 * 1.0.1
   * Bugfix - invalid build, and some functions did not work as expected. 
