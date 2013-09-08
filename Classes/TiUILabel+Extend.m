@@ -41,7 +41,7 @@ static char highlightColor;
 -(void)setAttributedText_:(id)args
 {
     //Check if attributedText is supported. (iOS6 +)
-    if (![[self label] respondsToSelector:@selector(setAttributedText:)]) {
+    if (![label respondsToSelector:@selector(setAttributedText:)]) {
         return;
     }
     
@@ -79,10 +79,17 @@ static char highlightColor;
         if([object valueForKey:@"text"]) {
             NSString *str = [TiUtils stringValue:[object valueForKey:@"text"]];
             range = [text rangeOfString:str options:(NSCaseInsensitiveSearch)];
+            
+            if(range.location == NSNotFound || range.length == 0)
+            {
+                continue;
+            }
+            
         }
         else if([object valueForKey:@"range"]) {
             NSArray *_r = [object valueForKey:@"range"];
-            range = NSMakeRange([[_r objectAtIndex:0] integerValue], [[_r objectAtIndex:1] integerValue]);
+            
+            range = NSMakeRange([[_r objectAtIndex:0] integerValue], ([[_r objectAtIndex:1] integerValue] > text.length)?text.length : [[_r objectAtIndex:1] integerValue]);
         }
         
         //If the substring or range wasn't found, do nothing.
@@ -141,8 +148,7 @@ static char highlightColor;
                                                     action:@selector(longpressOnWord:)];
                 
                 [label  addGestureRecognizer:longPress];
-                [longPress retain];
-                
+            
             }
             
         }
@@ -475,7 +481,7 @@ static char highlightColor;
         [attributedString addAttribute:NSForegroundColorAttributeName value:preColor range:range];
         label.attributedText = attributedString;
         
-        self.highlightedRange = NSStringFromRange(NSMakeRange(NSNotFound, 0));
+        self.highlightedRange = NULL;//NSStringFromRange(NSMakeRange(NSNotFound, 0));
     }
     
 }
@@ -552,8 +558,6 @@ static char highlightColor;
         CFRelease(path);
         return NSNotFound;
     }
-    
-    
     
     CFArrayRef lines = CTFrameGetLines(frame);
     
