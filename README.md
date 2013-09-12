@@ -249,10 +249,12 @@ win.add(label);
 A more extensive example is included in `/example/app.js`
 
 ## Changelog
-* 1.1.3 (AT)
-	* Highlight color for links
-	* Fixed a bug that would cause the application to crash if the user moved the touch point outside the label's bounds
-
+* 1.1.4
+    * Attributed Text: Fixed touch location bug causing application to crash
+    * Attributed Text: Fixed highlight range bug
+    * Attributed Text: ARC for memory management
+    * Attributed Text: Lower memory consumption. Good to use in TiUITableViews \*wink\*
+    
 * 1.1.3
     * Attributed Text: Highlight links when selected
     * Attributed Text: LongPress event
