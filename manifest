@@ -3,7 +3,7 @@
 # during compilation, packaging, distribution, etc.
 #
 
-version: 1.1.3
+version: 1.1.4
 apiversion: 2
 description: Napp UI
 author: Mads Møller
@@ -16,4 +16,4 @@ name: nappui
 moduleid: dk.napp.ui
 guid: 350a6144-b15b-4741-b4df-067d318e6b91
 platform: iphone
-minsdk: 2.1.4.GA
+minsdk: 3.1.2.GA

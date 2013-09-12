@@ -1,11 +1,11 @@
 /**
- * Module developed by Napp
- * Author Mads Møller
- * www.napp.dk
+ *  Module developed by Napp
+ *  Author Mads Møller
+ *  www.napp.dk
  *
- * TiUILabel+Extend by @dezinezync
- * Author: Nikhil Nigade
- * dezinezync.com
+ *  TiUILabel+Extend by @dezinezync
+ *  Author: Nikhil Nigade
+ *  dezinezync.com
  */
 
 #import "TiUILabel+Extend.h"
@@ -13,41 +13,42 @@
 #import <objc/runtime.h>
 #import <CoreText/CoreText.h>
 
-static char highlightedRange;
-static char highlightColor;
-
 @implementation TiUILabel (Extend)
 
 -(NSString *)highlightedRange
 {
-    return objc_getAssociatedObject(self, &highlightedRange);
+    
+    return objc_getAssociatedObject(self, @selector(highlightedRange));
 }
 
 -(void)setHighlightedRange:(NSString *)range
 {
-    objc_setAssociatedObject(self, &highlightedRange, range, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(highlightedRange), range, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(UIColor *)highlightColor
 {
-    return objc_getAssociatedObject(self, &highlightColor);
+    return objc_getAssociatedObject(self, @selector(highlightColor));
 }
 
 -(void)setHighlightColor:(UIColor *)color
 {
-    objc_setAssociatedObject(self, &highlightColor, color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(highlightColor), color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(void)setAttributedText_:(id)args
 {
     //Check if attributedText is supported. (iOS6 +)
-    if (![[self label] respondsToSelector:@selector(setAttributedText:)]) {
+    if (![label respondsToSelector:@selector(setAttributedText:)]) {
         return;
     }
     
+    [label setUserInteractionEnabled:TRUE];
+    
+    //UILabel *_label = [self label];
+    
     BOOL lpEV = NO;
     
-    UILabel *_label = [self label];
     UIColor *_labelColor = [UIColor darkTextColor];
     
     NSString *text = [TiUtils stringValue:[args objectForKey:@"text"]]; //Grabs the text
@@ -69,8 +70,6 @@ static char highlightColor;
     
     NSArray *attributes = [args objectForKey:@"attributes"]; //Grabs the attributes
     
-    //NSMutableArray *linkRanges = [[NSMutableArray alloc] init];
-    
     for(id object in attributes) {
         
         NSRange range;
@@ -79,13 +78,16 @@ static char highlightColor;
             NSString *str = [TiUtils stringValue:[object valueForKey:@"text"]];
             range = [text rangeOfString:str options:(NSCaseInsensitiveSearch)];
             
-            [str release];
+            if(range.location == NSNotFound || range.length == 0)
+            {
+                continue;
+            }
+            
         }
         else if([object valueForKey:@"range"]) {
             NSArray *_r = [object valueForKey:@"range"];
-            range = NSMakeRange([[_r objectAtIndex:0] integerValue], [[_r objectAtIndex:1] integerValue]);
             
-            [_r release];
+            range = NSMakeRange([[_r objectAtIndex:0] integerValue], ([[_r objectAtIndex:1] integerValue] > text.length)?text.length : [[_r objectAtIndex:1] integerValue]);
         }
         
         //If the substring or range wasn't found, do nothing.
@@ -127,7 +129,6 @@ static char highlightColor;
             UIColor *bgColor = [[TiUtils colorValue:[object valueForKey:@"backgroundColor"]] _color];
             
             [_attr setObject:(bgColor !=nil)?bgColor:[UIColor lightGrayColor] forKey:NSBackgroundColorAttributeName];
-            
         }
         
         //LINK
@@ -145,8 +146,7 @@ static char highlightColor;
                                                     action:@selector(longpressOnWord:)];
                 
                 [label  addGestureRecognizer:longPress];
-                [label setUserInteractionEnabled:TRUE];
-                
+            
             }
             
         }
@@ -192,19 +192,21 @@ static char highlightColor;
         
         //Setting it all up
         [attrS setAttributes:_attr range:range];
-        
-        [_attr release];
-        
+    
     }
     
     //Set the text. Notify the proxy about contentChange
-    [_label setAttributedText:attrS];
+    [label setAttributedText:attrS];
+    //[_label sizeToFit];
+    //[self sizeToFit];
     [(TiViewProxy *)[self proxy] contentsWillChange];
-
+    
 }
 
 -(void)longpressOnWord:(UILongPressGestureRecognizer *)gesture
 {
+    if(label.attributedText == nil) return;
+    
     //If we don't have an event listener
     //Do nothing. Save processing power. ;)
     
@@ -216,20 +218,21 @@ static char highlightColor;
         
         CGPoint touchPoint = [gesture locationOfTouch:0 inView:gesture.view];
         // Convert to coordinate system of current view
-        touchPoint.y -= self.bounds.size.height;
-        touchPoint.y *= -1;
+        //touchPoint.y -= self.bounds.size.height;
+        //touchPoint.y *= -1;
         
-        if(CGRectContainsPoint(self.bounds, touchPoint)) {
+        if(CGRectContainsPoint(gesture.view.bounds, touchPoint)) {
             
             CFIndex index = [self characterIndexAtPoint:touchPoint];
+
+            if(index > label.attributedText.string.length) return;
             
-            NSDictionary *attrs = [label.attributedText attributesAtIndex:index effectiveRange:NULL];
-            if(attrs != nil && [attrs valueForKey:@"link"] != nil)
-            {
-                
-                NSString *link = [TiUtils stringValue:[attrs valueForKey:@"link"]];
-                [self.proxy fireEvent:@"longpress" withObject:@{@"url": link}];
-                
+            NSMutableAttributedString *str = [label.attributedText mutableCopy];
+            
+            NSString *url = [str attribute:@"link" atIndex:index effectiveRange:NULL];
+            
+            if(url != nil && url.length) {
+                [self.proxy fireEvent:@"longpress" withObject:@{@"url": url, @"bubbles": @YES}];
             }
             
         }
@@ -240,6 +243,7 @@ static char highlightColor;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if(label.attributedText == nil) return;
     
     if(![self.proxy _hasListeners:@"url"]) {
         return;
@@ -250,22 +254,20 @@ static char highlightColor;
     if ([allTouches count] == 1)
     {
         UITouch *touch = (UITouch *)[allTouches anyObject];
-        CGPoint touchPoint = [touch locationInView:self];
+        CGPoint touchPoint = [touch locationInView:touch.view];
         
-        // Convert to coordinate system of current view
-        touchPoint.y -= self.bounds.size.height;
-        touchPoint.y *= -1;
-        
-        if(CGRectContainsPoint(self.bounds, touchPoint)) {
+        if(CGRectContainsPoint(touch.view.bounds, touchPoint)) {
             
             CFIndex index = [self characterIndexAtPoint:touchPoint];
+
+            NSMutableAttributedString *str = [label.attributedText mutableCopy];
+           
+            if(index > str.string.length) return;
             
-            NSDictionary *attrs = [label.attributedText attributesAtIndex:index effectiveRange:NULL];
-            if(attrs != nil && [attrs valueForKey:@"link"] != nil)
-            {
-                
+            NSString *url = [str attribute:@"link" atIndex:index effectiveRange:NULL];
+            
+            if(url != nil && url.length) {
                 [self highlightWordContainingCharacterAtIndex:index];
-                
             }
             
         }
@@ -275,6 +277,9 @@ static char highlightColor;
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if(label.attributedText == nil) return;
+    
     if(![self.proxy _hasListeners:@"url"]) {
         return;
     }
@@ -284,22 +289,20 @@ static char highlightColor;
     if ([allTouches count] == 1)
     {
         UITouch *touch = (UITouch *)[allTouches anyObject];
-        CGPoint touchPoint = [touch locationInView:self];
+        CGPoint touchPoint = [touch locationInView:touch.view];
         
-        // Convert to coordinate system of current view
-        touchPoint.y -= self.bounds.size.height;
-        touchPoint.y *= -1;
-        
-        if(CGRectContainsPoint(self.bounds, touchPoint)) {
+        if(CGRectContainsPoint(touch.view.bounds, touchPoint)) {
             
             CFIndex index = [self characterIndexAtPoint:touchPoint];
-            
-            NSDictionary *attrs = [label.attributedText attributesAtIndex:index effectiveRange:NULL];
-            if(attrs != nil && [attrs valueForKey:@"link"] != nil)
-            {
 
-                [self highlightWordContainingCharacterAtIndex:index];
+            NSMutableAttributedString *str = [label.attributedText mutableCopy];
             
+            if(index > str.string.length) return;
+            
+            NSString *url = [str attribute:@"link" atIndex:index effectiveRange:NULL];
+            
+            if(url != nil && url.length) {
+                [self highlightWordContainingCharacterAtIndex:index];
             }
             
         }
@@ -310,37 +313,38 @@ static char highlightColor;
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //If we don't have an event listener
-    //Do nothing. Save processing power. ;)
-    
-    if(![self.proxy _hasListeners:@"url"]) {
-        return;
-    }
+    if(label.attributedText == nil) return;
     
     [self removeHighlight];
     
     NSSet *allTouches = [event allTouches];
-    
+  
     if ([allTouches count] == 1)
     {
         UITouch *touch = (UITouch *)[allTouches anyObject];
-        CGPoint touchPoint = [touch locationInView:self];
-        
-        // Convert to coordinate system of current view
-        touchPoint.y -= self.bounds.size.height;
-        touchPoint.y *= -1;
-        
-        if(CGRectContainsPoint(self.bounds, touchPoint)) {
-         
+        CGPoint touchPoint = [touch locationInView:touch.view];
+
+        if(CGRectContainsPoint(touch.view.bounds, touchPoint)) {
+
             CFIndex index = [self characterIndexAtPoint:touchPoint];
+
+            NSMutableAttributedString *str = [label.attributedText mutableCopy];
             
-            NSDictionary *attrs = [label.attributedText attributesAtIndex:index effectiveRange:NULL];
-            if(attrs != nil && [attrs valueForKey:@"link"] != nil)
+            if(index > str.string.length)
             {
-                
-                NSString *link = [TiUtils stringValue:[attrs valueForKey:@"link"]];
-                [self.proxy fireEvent:@"url" withObject:@{@"url": link}];
-                
+                [self.proxy fireEvent:@"click" withObject:nil propagate:YES];
+                return;
+            }
+            
+            NSString *url = [str attribute:@"link" atIndex:index effectiveRange:NULL];
+            
+            if(url != nil && url.length) {
+                [self.proxy fireEvent:@"url" withObject:@{@"url":url} propagate:YES];
+                [self.proxy fireEvent:@"click" withObject:@{@"url":url} propagate:YES];
+            }
+            else
+            {
+                [self.proxy fireEvent:@"click" withObject:@{@"x": [NSNumber numberWithFloat:touchPoint.x], @"y": [NSNumber numberWithFloat:touchPoint.y]} propagate:YES];
             }
             
         }
@@ -351,6 +355,8 @@ static char highlightColor;
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if(label.attributedText == nil) return;
+    
     [self removeHighlight];
 }
 
@@ -371,7 +377,7 @@ static char highlightColor;
         return;
     }
     
-    NSString* string = label.text;
+    NSString* string = label.attributedText.string;
     
     //get the start and end positions
     NSRange end = [string rangeOfString:@" " options:0 range:NSMakeRange(charIndex, string.length - charIndex)];
@@ -418,9 +424,14 @@ static char highlightColor;
     NSDictionary *d = [attributedString attributesAtIndex:rangeForWord.location effectiveRange:NULL];
     UIColor *preColor = [d objectForKey:NSForegroundColorAttributeName];
     
+    [attributedString removeAttribute:NSForegroundColorAttributeName range:rangeForWord];
+    
     [attributedString addAttribute:NSForegroundColorAttributeName value:self.highlightColor range:rangeForWord];
     [attributedString addAttribute:@"preColor" value:preColor range:rangeForWord];
+    
     label.attributedText = attributedString;
+    
+    self.highlightedRange = NSStringFromRange(rangeForWord);
     
     [self setHighlightedRange:NSStringFromRange(rangeForWord)];
     
@@ -439,10 +450,11 @@ static char highlightColor;
         
         [attributedString removeAttribute:@"preColor" range:range];
         
+        [attributedString removeAttribute:NSForegroundColorAttributeName range:range];
         [attributedString addAttribute:NSForegroundColorAttributeName value:preColor range:range];
         label.attributedText = attributedString;
         
-        self.highlightedRange = NSStringFromRange(NSMakeRange(NSNotFound, 0));
+        self.highlightedRange = NULL;
     }
     
 }
@@ -491,8 +503,6 @@ static char highlightColor;
     
     CGRect textRect = [self textRect];
     
-    //NSLog(@"%@", NSStringFromCGRect(textRect));
-    
     if (!CGRectContainsPoint(textRect, point)) {
         return NSNotFound;
     }
@@ -519,8 +529,6 @@ static char highlightColor;
         CFRelease(path);
         return NSNotFound;
     }
-    
-    
     
     CFArrayRef lines = CTFrameGetLines(frame);
     
