@@ -47,7 +47,7 @@ var label = Ti.UI.createLabel({
 	attributedText: {
     	text: string,
     	color: '#757572',
-    	highlightColor: "#6060bf",
+    	highlightColor: "#444444",
 
     	attributes: [
     	{
@@ -64,7 +64,8 @@ var label = Ti.UI.createLabel({
     			fontFamily: "Avenir-Light",
     			fontSize: 16
     		},
-    		color: "blue"
+    		color: "blue",
+    		link: "http://twitter.com/dezinezync"
     	}, {
     		text: "NappUI module",
     		font: {
@@ -75,7 +76,7 @@ var label = Ti.UI.createLabel({
     		range: [58, 6], //Starting index for the word "Coming", length of the word "coming"
     						//Useful for when you have ready-made indexes (eg. Twitter API), 
     						//or multiple occurences of the same word
-    		underline: 1 //single line,
+    		underline: 1, //single line,
     		font: {
     			fontFamily: "HelveticaNeue-BoldItalic"
     			// fontSize will get inheirted from the parent style
