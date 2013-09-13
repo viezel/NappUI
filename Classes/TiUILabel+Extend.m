@@ -245,11 +245,12 @@
 {
     if(label.attributedText == nil) return;
     
-    if(![self.proxy _hasListeners:@"url"]) {
-        return;
-    }
-    
     NSSet *allTouches = [event allTouches];
+    
+    if([self.proxy _hasListeners:@"touchstart"])
+    {
+        [self.proxy fireEvent:@"touchstart" withObject:nil propagate:YES];
+    }
     
     if ([allTouches count] == 1)
     {
@@ -280,11 +281,12 @@
     
     if(label.attributedText == nil) return;
     
-    if(![self.proxy _hasListeners:@"url"]) {
-        return;
-    }
-    
     NSSet *allTouches = [event allTouches];
+    
+    if([self.proxy _hasListeners:@"touchmove"])
+    {
+        [self.proxy fireEvent:@"touchmove" withObject:nil propagate:YES];
+    }
     
     if ([allTouches count] == 1)
     {
@@ -316,6 +318,11 @@
     if(label.attributedText == nil) return;
     
     [self removeHighlight];
+    
+    if([self.proxy _hasListeners:@"touchend"])
+    {
+        [self.proxy fireEvent:@"touchend" withObject:nil propagate:YES];
+    }
     
     NSSet *allTouches = [event allTouches];
   
@@ -355,6 +362,11 @@
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if([self.proxy _hasListeners:@"touchcancel"])
+    {
+        [self.proxy fireEvent:@"touchcancel" withObject:nil propagate:YES];
+    }
+    
     if(label.attributedText == nil) return;
     
     [self removeHighlight];
