@@ -45,8 +45,6 @@
     
     [label setUserInteractionEnabled:TRUE];
     
-    //UILabel *_label = [self label];
-    
     BOOL lpEV = NO;
     
     UIColor *_labelColor = [UIColor darkTextColor];
@@ -197,8 +195,7 @@
     
     //Set the text. Notify the proxy about contentChange
     [label setAttributedText:attrS];
-    //[_label sizeToFit];
-    //[self sizeToFit];
+    
     [(TiViewProxy *)[self proxy] contentsWillChange];
     
 }
@@ -217,9 +214,6 @@
     if(gesture.state == UIGestureRecognizerStateBegan) {
         
         CGPoint touchPoint = [gesture locationOfTouch:0 inView:gesture.view];
-        // Convert to coordinate system of current view
-        //touchPoint.y -= self.bounds.size.height;
-        //touchPoint.y *= -1;
         
         if(CGRectContainsPoint(gesture.view.bounds, touchPoint)) {
             
@@ -528,12 +522,8 @@
     
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)optimizedAttributedText);
     
-    
-    
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, textRect);
-    
-    
     
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, [label.attributedText length]), path, NULL);
     
