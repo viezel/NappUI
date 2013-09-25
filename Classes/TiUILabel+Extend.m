@@ -12,9 +12,12 @@
 #import "TiUtils.h"
 #import <objc/runtime.h>
 #import <CoreText/CoreText.h>
+#import "JRSwizzle.h"
 
 @implementation TiUILabel (Extend)
 
+#pragma mark
+#pragma iVars
 -(NSString *)highlightedRange
 {
     
@@ -36,6 +39,17 @@
     objc_setAssociatedObject(self, @selector(highlightColor), color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
++(void)load
+{
+    NSError *error = nil;
+    
+    [TiUILabel jr_swizzleMethod:@selector(padLabel) withMethod:@selector(padLabelAlt) error:&error];
+    if (error != nil) {
+        NSLog(@"[ERROR] %@", [error localizedDescription]);
+    }
+
+}
+
 -(void)setAttributedText_:(id)args
 {
     //Check if attributedText is supported. (iOS6 +)
@@ -44,8 +58,6 @@
     }
     
     [label setUserInteractionEnabled:TRUE];
-    
-    //UILabel *_label = [self label];
     
     BOOL lpEV = NO;
     
@@ -197,10 +209,18 @@
     
     //Set the text. Notify the proxy about contentChange
     [label setAttributedText:attrS];
-    //[_label sizeToFit];
-    //[self sizeToFit];
+    
     [(TiViewProxy *)[self proxy] contentsWillChange];
     
+}
+
+-(void)padLabelAlt
+{
+    CGRect frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, 0.0f);
+    [label setFrame:frame];
+    
+    [label sizeToFit];
+    return;
 }
 
 -(void)longpressOnWord:(UILongPressGestureRecognizer *)gesture
@@ -217,9 +237,6 @@
     if(gesture.state == UIGestureRecognizerStateBegan) {
         
         CGPoint touchPoint = [gesture locationOfTouch:0 inView:gesture.view];
-        // Convert to coordinate system of current view
-        //touchPoint.y -= self.bounds.size.height;
-        //touchPoint.y *= -1;
         
         if(CGRectContainsPoint(gesture.view.bounds, touchPoint)) {
             
@@ -232,7 +249,16 @@
             NSString *url = [str attribute:@"link" atIndex:index effectiveRange:NULL];
             
             if(url != nil && url.length) {
-                [self.proxy fireEvent:@"longpress" withObject:@{@"url": url, @"bubbles": @YES}];
+                
+                CGPoint globalPoint = [gesture locationOfTouch:0 inView:gesture.view.superview.superview];
+                
+                [self.proxy fireEvent:@"longpress" withObject:@{
+                                                                @"url": url,
+                                                                @"x": [NSNumber numberWithFloat:touchPoint.x],
+                                                                @"y": [NSNumber numberWithFloat:touchPoint.y],
+                                                                @"globalX": [NSNumber numberWithFloat:globalPoint.x],
+                                                                @"globalY": [NSNumber numberWithFloat:globalPoint.y]
+                                                                } propagate:YES];
             }
             
         }
@@ -245,11 +271,12 @@
 {
     if(label.attributedText == nil) return;
     
-    if(![self.proxy _hasListeners:@"url"]) {
-        return;
-    }
-    
     NSSet *allTouches = [event allTouches];
+    
+    if([self.proxy _hasListeners:@"touchstart"])
+    {
+        [self.proxy fireEvent:@"touchstart" withObject:nil propagate:YES];
+    }
     
     if ([allTouches count] == 1)
     {
@@ -280,11 +307,12 @@
     
     if(label.attributedText == nil) return;
     
-    if(![self.proxy _hasListeners:@"url"]) {
-        return;
-    }
-    
     NSSet *allTouches = [event allTouches];
+    
+    if([self.proxy _hasListeners:@"touchmove"])
+    {
+        [self.proxy fireEvent:@"touchmove" withObject:nil propagate:YES];
+    }
     
     if ([allTouches count] == 1)
     {
@@ -317,6 +345,11 @@
     
     [self removeHighlight];
     
+    if([self.proxy _hasListeners:@"touchend"])
+    {
+        [self.proxy fireEvent:@"touchend" withObject:nil propagate:YES];
+    }
+    
     NSSet *allTouches = [event allTouches];
   
     if ([allTouches count] == 1)
@@ -338,13 +371,34 @@
             
             NSString *url = [str attribute:@"link" atIndex:index effectiveRange:NULL];
             
+            CGPoint globalPoint = [touch locationInView:touch.view.superview.superview];
+            
             if(url != nil && url.length) {
-                [self.proxy fireEvent:@"url" withObject:@{@"url":url} propagate:YES];
-                [self.proxy fireEvent:@"click" withObject:@{@"url":url} propagate:YES];
+                
+                [self.proxy fireEvent:@"url" withObject:@{
+                                                          @"url":url,
+                                                          @"x": [NSNumber numberWithFloat:touchPoint.x],
+                                                          @"y": [NSNumber numberWithFloat:touchPoint.y],
+                                                          @"globalX": [NSNumber numberWithFloat:globalPoint.x],
+                                                          @"globalY": [NSNumber numberWithFloat:globalPoint.y]
+                                                          } propagate:YES];
+                [self.proxy fireEvent:@"click" withObject:@{
+                                                            @"url":url,
+                                                            @"x": [NSNumber numberWithFloat:touchPoint.x],
+                                                            @"y": [NSNumber numberWithFloat:touchPoint.y],
+                                                            @"globalX": [NSNumber numberWithFloat:globalPoint.x],
+                                                            @"globalY": [NSNumber numberWithFloat:globalPoint.y]
+                                                            } propagate:YES];
             }
             else
             {
-                [self.proxy fireEvent:@"click" withObject:@{@"x": [NSNumber numberWithFloat:touchPoint.x], @"y": [NSNumber numberWithFloat:touchPoint.y]} propagate:YES];
+                
+                [self.proxy fireEvent:@"click" withObject:@{
+                                                            @"x": [NSNumber numberWithFloat:touchPoint.x],
+                                                            @"y": [NSNumber numberWithFloat:touchPoint.y],
+                                                            @"globalX": [NSNumber numberWithFloat:globalPoint.x],
+                                                            @"globalY": [NSNumber numberWithFloat:globalPoint.y]
+                                                            } propagate:YES];
             }
             
         }
@@ -355,6 +409,11 @@
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if([self.proxy _hasListeners:@"touchcancel"])
+    {
+        [self.proxy fireEvent:@"touchcancel" withObject:nil propagate:YES];
+    }
+    
     if(label.attributedText == nil) return;
     
     [self removeHighlight];
@@ -516,12 +575,8 @@
     
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)optimizedAttributedText);
     
-    
-    
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, textRect);
-    
-    
     
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, [label.attributedText length]), path, NULL);
     
