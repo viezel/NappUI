@@ -249,6 +249,9 @@ win.add(label);
 A more extensive example is included in `/example/app.js`
 
 ## Changelog
+* 1.1.5
+	* Attributed Text: Fix for Strings containing Emoji characters
+
 * 1.1.4
     * Attributed Text: Fixed touch location bug causing application to crash
     * Attributed Text: Fixed highlight range bug

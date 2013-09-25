@@ -12,9 +12,12 @@
 #import "TiUtils.h"
 #import <objc/runtime.h>
 #import <CoreText/CoreText.h>
+#import "JRSwizzle.h"
 
 @implementation TiUILabel (Extend)
 
+#pragma mark
+#pragma iVars
 -(NSString *)highlightedRange
 {
     
@@ -34,6 +37,17 @@
 -(void)setHighlightColor:(UIColor *)color
 {
     objc_setAssociatedObject(self, @selector(highlightColor), color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++(void)load
+{
+    NSError *error = nil;
+    
+    [TiUILabel jr_swizzleMethod:@selector(padLabel) withMethod:@selector(padLabelAlt) error:&error];
+    if (error != nil) {
+        NSLog(@"[ERROR] %@", [error localizedDescription]);
+    }
+
 }
 
 -(void)setAttributedText_:(id)args
@@ -200,6 +214,15 @@
     
 }
 
+-(void)padLabelAlt
+{
+    CGRect frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, 0.0f);
+    [label setFrame:frame];
+    
+    [label sizeToFit];
+    return;
+}
+
 -(void)longpressOnWord:(UILongPressGestureRecognizer *)gesture
 {
     if(label.attributedText == nil) return;
@@ -226,7 +249,16 @@
             NSString *url = [str attribute:@"link" atIndex:index effectiveRange:NULL];
             
             if(url != nil && url.length) {
-                [self.proxy fireEvent:@"longpress" withObject:@{@"url": url, @"bubbles": @YES}];
+                
+                CGPoint globalPoint = [gesture locationOfTouch:0 inView:gesture.view.superview.superview];
+                
+                [self.proxy fireEvent:@"longpress" withObject:@{
+                                                                @"url": url,
+                                                                @"x": [NSNumber numberWithFloat:touchPoint.x],
+                                                                @"y": [NSNumber numberWithFloat:touchPoint.y],
+                                                                @"globalX": [NSNumber numberWithFloat:globalPoint.x],
+                                                                @"globalY": [NSNumber numberWithFloat:globalPoint.y]
+                                                                } propagate:YES];
             }
             
         }
@@ -339,13 +371,34 @@
             
             NSString *url = [str attribute:@"link" atIndex:index effectiveRange:NULL];
             
+            CGPoint globalPoint = [touch locationInView:touch.view.superview.superview];
+            
             if(url != nil && url.length) {
-                [self.proxy fireEvent:@"url" withObject:@{@"url":url} propagate:YES];
-                [self.proxy fireEvent:@"click" withObject:@{@"url":url} propagate:YES];
+                
+                [self.proxy fireEvent:@"url" withObject:@{
+                                                          @"url":url,
+                                                          @"x": [NSNumber numberWithFloat:touchPoint.x],
+                                                          @"y": [NSNumber numberWithFloat:touchPoint.y],
+                                                          @"globalX": [NSNumber numberWithFloat:globalPoint.x],
+                                                          @"globalY": [NSNumber numberWithFloat:globalPoint.y]
+                                                          } propagate:YES];
+                [self.proxy fireEvent:@"click" withObject:@{
+                                                            @"url":url,
+                                                            @"x": [NSNumber numberWithFloat:touchPoint.x],
+                                                            @"y": [NSNumber numberWithFloat:touchPoint.y],
+                                                            @"globalX": [NSNumber numberWithFloat:globalPoint.x],
+                                                            @"globalY": [NSNumber numberWithFloat:globalPoint.y]
+                                                            } propagate:YES];
             }
             else
             {
-                [self.proxy fireEvent:@"click" withObject:@{@"x": [NSNumber numberWithFloat:touchPoint.x], @"y": [NSNumber numberWithFloat:touchPoint.y]} propagate:YES];
+                
+                [self.proxy fireEvent:@"click" withObject:@{
+                                                            @"x": [NSNumber numberWithFloat:touchPoint.x],
+                                                            @"y": [NSNumber numberWithFloat:touchPoint.y],
+                                                            @"globalX": [NSNumber numberWithFloat:globalPoint.x],
+                                                            @"globalY": [NSNumber numberWithFloat:globalPoint.y]
+                                                            } propagate:YES];
             }
             
         }
