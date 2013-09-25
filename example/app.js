@@ -32,7 +32,7 @@ var view = Ti.UI.createView({
 });
 
 
-var string = "Hello world. This is an addition by @dezinezync #winning. Coming soon to the NappUI module.";
+var string = "Hello world. This is an addition by @dezinezync #winning. Coming soon 😃 to the NappUI module.";
 
 var label = Ti.UI.createLabel({
 	width: 290,
@@ -101,6 +101,9 @@ var label = Ti.UI.createLabel({
 //If you forget setting this, you won't be able to catch the url event.
 
 label.addEventListener('url', function(e) {
+
+	console.log(e);
+
 	if(e.url) {	
 		Ti.API.info("Got URL");
 		if(Ti.Platform.canOpenURL(e.url)) {
@@ -110,6 +113,9 @@ label.addEventListener('url', function(e) {
 
 });
 label.addEventListener('longpress', function(e) {
+
+	console.log(e);
+
 	if(e.url) {
 		Ti.API.info("Got URL: LongPressed");
 		if(Ti.Platform.canOpenURL(e.url)) {
