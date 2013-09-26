@@ -216,7 +216,35 @@
 
 -(void)padLabelAlt
 {
-    CGRect frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, 0.0f);
+    
+    CGFloat originX = 0;
+    CGFloat originY = 0;
+    CGSize actualLabelSize = self.frame.size;
+    
+    switch (label.textAlignment) {
+        case UITextAlignmentRight|NSTextAlignmentLeft:
+            originX = (initialLabelFrame.size.width - actualLabelSize.width);
+            break;
+        case UITextAlignmentCenter|NSTextAlignmentCenter:
+            originX = (initialLabelFrame.size.width - actualLabelSize.width)/2.0;
+            break;
+        default:
+            break;
+    }
+    
+    switch (verticalAlign) {
+        case UIControlContentVerticalAlignmentBottom:
+            originY = initialLabelFrame.size.height - actualLabelSize.height;
+            break;
+        case UIControlContentVerticalAlignmentCenter:
+            originY = (initialLabelFrame.size.height - actualLabelSize.height)/2;
+            break;
+        default:
+            originY = 0.0f;
+            break;
+    }
+    
+    CGRect frame = CGRectMake(originX, originY, self.frame.size.width, 0.0f);
     [label setFrame:frame];
     
     [label sizeToFit];

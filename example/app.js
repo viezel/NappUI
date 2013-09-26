@@ -44,6 +44,7 @@ var label = Ti.UI.createLabel({
 		fontFamily: "Avenir-Roman",
 		fontSize: 16
 	},
+	
 	attributedText: {
     	text: string,
     	color: '#757572',
