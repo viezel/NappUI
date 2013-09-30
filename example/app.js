@@ -34,6 +34,22 @@ var view = Ti.UI.createView({
 
 var string = "Hello world. This is an addition by @dezinezync #winning. Coming soon 😃 to the NappUI module.";
 
+var labelNormal = Ti.UI.createLabel({
+	width: 290,
+	left: 15,
+	text: string,
+
+	textAlign: "right",
+
+	font: {
+		fontFamily: "Avenir-Roman",
+		fontSize: 16
+	},
+	color: "darkText"
+});
+
+window.add(labelNormal);
+
 var label = Ti.UI.createLabel({
 	width: 290,
     bottom: 15,

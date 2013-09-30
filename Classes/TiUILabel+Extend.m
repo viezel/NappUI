@@ -39,22 +39,19 @@
     objc_setAssociatedObject(self, @selector(highlightColor), color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-+(void)load
-{
-    NSError *error = nil;
-    
-    [TiUILabel jr_swizzleMethod:@selector(padLabel) withMethod:@selector(padLabelAlt) error:&error];
-    if (error != nil) {
-        NSLog(@"[ERROR] %@", [error localizedDescription]);
-    }
-
-}
-
 -(void)setAttributedText_:(id)args
 {
     //Check if attributedText is supported. (iOS6 +)
     if (![label respondsToSelector:@selector(setAttributedText:)]) {
         return;
+    }
+    
+    //Swizzle padLabel
+    NSError *error = nil;
+    
+    [TiUILabel jr_swizzleMethod:@selector(padLabel) withMethod:@selector(padLabelAlt) error:&error];
+    if (error != nil) {
+        NSLog(@"[ERROR] %@", [error localizedDescription]);
     }
     
     [label setUserInteractionEnabled:TRUE];
