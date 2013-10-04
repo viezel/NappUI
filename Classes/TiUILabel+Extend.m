@@ -39,22 +39,19 @@
     objc_setAssociatedObject(self, @selector(highlightColor), color, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-+(void)load
-{
-    NSError *error = nil;
-    
-    [TiUILabel jr_swizzleMethod:@selector(padLabel) withMethod:@selector(padLabelAlt) error:&error];
-    if (error != nil) {
-        NSLog(@"[ERROR] %@", [error localizedDescription]);
-    }
-
-}
-
 -(void)setAttributedText_:(id)args
 {
     //Check if attributedText is supported. (iOS6 +)
     if (![label respondsToSelector:@selector(setAttributedText:)]) {
         return;
+    }
+    
+    //Swizzle padLabel
+    NSError *error = nil;
+    
+    [TiUILabel jr_swizzleMethod:@selector(padLabel) withMethod:@selector(padLabelAlt) error:&error];
+    if (error != nil) {
+        NSLog(@"[ERROR] %@", [error localizedDescription]);
     }
     
     [label setUserInteractionEnabled:TRUE];
@@ -216,7 +213,35 @@
 
 -(void)padLabelAlt
 {
-    CGRect frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, 0.0f);
+    
+    CGFloat originX = 0;
+    CGFloat originY = 0;
+    CGSize actualLabelSize = self.frame.size;
+    
+    switch (label.textAlignment) {
+        case UITextAlignmentRight|NSTextAlignmentLeft:
+            originX = (initialLabelFrame.size.width - actualLabelSize.width);
+            break;
+        case UITextAlignmentCenter|NSTextAlignmentCenter:
+            originX = (initialLabelFrame.size.width - actualLabelSize.width)/2.0;
+            break;
+        default:
+            break;
+    }
+    
+    switch (verticalAlign) {
+        case UIControlContentVerticalAlignmentBottom:
+            originY = initialLabelFrame.size.height - actualLabelSize.height;
+            break;
+        case UIControlContentVerticalAlignmentCenter:
+            originY = (initialLabelFrame.size.height - actualLabelSize.height)/2;
+            break;
+        default:
+            originY = 0.0f;
+            break;
+    }
+    
+    CGRect frame = CGRectMake(originX, originY, self.frame.size.width, 0.0f);
     [label setFrame:frame];
     
     [label sizeToFit];

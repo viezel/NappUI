@@ -1,4 +1,3 @@
-
 var NappUI = require("dk.napp.ui");
 
 var window = Ti.UI.createWindow({
@@ -44,6 +43,7 @@ var label = Ti.UI.createLabel({
 		fontFamily: "Avenir-Roman",
 		fontSize: 16
 	},
+	
 	attributedText: {
     	text: string,
     	color: '#757572',
