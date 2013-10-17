@@ -8,9 +8,12 @@
 
 #import "TiUIWebView+Extend.h"
 #import "TiUtils.h"
+#import <objc/runtime.h>
 
 @implementation TiUIWebView (Extend)
 
+#pragma mark
+#pragma iVars
 - (void)setNormalScrollSpeed_:(id)args
 {
     BOOL normalSpeed = [TiUtils boolValue:args def:NO];
@@ -51,34 +54,71 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 
+-(NSDictionary *)customHeaders
+{
+    return objc_getAssociatedObject(self, @selector(customHeaders));
+}
+
+-(void)setCustomHeaders_:(NSDictionary *)headers
+{
+    objc_setAssociatedObject(self, @selector(customHeaders), headers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(NSDictionary *)customHeaders_
+{
+    NSLog(@"customHeaders");
+    return objc_getAssociatedObject(self, @selector(customHeaders));
+}
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    BOOL headerIsPresent = [[request allHTTPHeaderFields] objectForKey:@"x-adp-app"]!=nil;
+    
     // Get request URL
     NSURL *url = [request URL];
-    // Get scheme information
-    NSString *scheme = [[url scheme] lowercaseString];
-    // Get URL path information
-    NSString *path = [url path];
-    // If the path begins with "/"
-    if([path hasPrefix:@"/"]) {
-        // Remove the head of the "/"
-        path = [path substringWithRange:NSMakeRange(1, path.length - 1)];
-    }
-    // If the scheme begins with "extendwebview"
-    if ([scheme isEqualToString:@"extendwebview"]) {
-        // Get event name from host
-        NSString *eventName = [url host];
-        // The same as the event name if it has been registered in the event listener
-        if ([self.proxy _hasListeners:eventName]){
-            NSLog(@"[DEBUG] fire: %@",eventName);
-            // Get event information
-            NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:path, @"path", eventName, @"event", nil];
-            // Execute
-            [self.proxy fireEvent:eventName withObject:event];
+    
+    if(headerIsPresent) {//|| self.customHeaders.count == 0
+        // Get scheme information
+        NSString *scheme = [[url scheme] lowercaseString];
+        // Get URL path information
+        NSString *path = [url path];
+        // If the path begins with "/"
+        if([path hasPrefix:@"/"]) {
+            // Remove the head of the "/"
+            path = [path substringWithRange:NSMakeRange(1, path.length - 1)];
         }
-        return NO;
+        // If the scheme begins with "extendwebview"
+        if ([scheme isEqualToString:@"extendwebview"]) {
+            // Get event name from host
+            NSString *eventName = [url host];
+            // The same as the event name if it has been registered in the event listener
+            if ([self.proxy _hasListeners:eventName]){
+                NSLog(@"[DEBUG] fire: %@",eventName);
+                // Get event information
+                NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:path, @"path", eventName, @"event", nil];
+                // Execute
+                [self.proxy fireEvent:eventName withObject:event];
+            }
+            return NO;
+        }
+        return YES;
     }
-    return YES;
+    else
+    {
+        NSLog(@"Adding header x-adp-app: true");
+		[request addValue:@"true" forHTTPHeaderField:@"x-adp-app"];
+        
+        // set the new headers
+        for(NSString *key in [self.customHeaders allKeys]){
+            NSLog(@"Adding header %@: %@", key, [self.customHeaders objectForKey:key]);
+            [request addValue:[self.customHeaders objectForKey:key] forHTTPHeaderField:key];
+        }
+        
+		[webView loadRequest:request];
+		return NO;
+	}
+    
+	return YES;
 }
 
 @end
