@@ -90,6 +90,7 @@ image.addEventListener('panend', function(e){});
 * Remove scroll delay
 * Communication between WebView and Titanium app
 * Change UserAgent
+* Add custom headers
 
 ```javascript
 var webView = Ti.UI.createWebView({
