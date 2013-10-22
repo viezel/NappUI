@@ -100,7 +100,7 @@ var webView = Ti.UI.createWebView({
     url: 'http://www.appcelerator.com'
 });
 webView.addEventListener('fromWebView', function(){});
-webView.setCustomHeaders({'my-customheader-1', 'custom-header-value', 'add-as-many-headers-as-you-need', 'value'});
+webView.setCustomHeaders({'my-customheader-1': 'custom-header-value', 'add-as-many-headers-as-you-need': 'value'});
 ```
 
 ### ScrollableView
