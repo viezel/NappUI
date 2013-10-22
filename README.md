@@ -100,6 +100,7 @@ var webView = Ti.UI.createWebView({
     url: 'http://www.appcelerator.com'
 });
 webView.addEventListener('fromWebView', function(){});
+webView.setCustomHeaders({'my-customheader-1', 'custom-header-value', 'add-as-many-headers-as-you-need', 'value'});
 ```
 
 ### ScrollableView
@@ -249,6 +250,9 @@ win.add(label);
 A more extensive example is included in `/example/app.js`
 
 ## Changelog
+* 1.1.6
+	* Added support for custom headers in webviews
+
 * 1.1.5
 	* Attributed Text: Fix for Strings containing Emoji characters
 
