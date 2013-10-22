@@ -66,7 +66,6 @@
 
 -(NSDictionary *)customHeaders_
 {
-    NSLog(@"customHeaders");
     return objc_getAssociatedObject(self, @selector(customHeaders));
 }
 
@@ -105,12 +104,11 @@
     }
     else
     {
-        NSLog(@"Adding header x-adp-app: true");
-		[request addValue:@"true" forHTTPHeaderField:@"x-adp-app"];
+        // this header is here to determine if the custom headers already has been added or not. this to prevent infinite loop
+        [request addValue:@"true" forHTTPHeaderField:@"x-adp-app"];
         
         // set the new headers
         for(NSString *key in [self.customHeaders allKeys]){
-            NSLog(@"Adding header %@: %@", key, [self.customHeaders objectForKey:key]);
             [request addValue:[self.customHeaders objectForKey:key] forHTTPHeaderField:key];
         }
         
