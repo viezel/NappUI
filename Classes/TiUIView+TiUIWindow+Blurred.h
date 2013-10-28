@@ -7,6 +7,7 @@
 #import "TiBase.h"
 #import "TiUIView.h"
 #import "TiUIWindow.h"
+#import "UIImage+ImageEffects.h"
 
 @interface TiUIView (ViewWithShadow)
 @end
