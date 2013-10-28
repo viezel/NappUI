@@ -31,7 +31,7 @@ The following lists the UI components and its new extended functionality.
 
 * Add a blur effect
   * 1.0: No blur effect
-  * 0: Maximum blur effect
+  * 0: Maximum blur effect 
 
 
 ```javascript
@@ -39,6 +39,23 @@ var win = Ti.UI.createWindow({
     blur:0.2
 });
 ```
+
+* Static Blur effect (a la' iOS 7)
+	* enabled: true or flase
+	* type
+	* tint (applicable when using the tint type)
+	
+~~~~
+var win = Ti.UI.createWindow({
+	staticBlur: {
+		enabled: true,
+		type: "tint",
+		tint: "#00ff00"
+	}
+});
+
+//See example/app.js for all applicable types
+~~~~
 
 ### View
 
@@ -55,6 +72,22 @@ var view = Ti.UI.createView({
     blur:0.75
 });
 ```
+
+* Static Blur effect (a la' iOS 7)
+	* enabled: true or flase
+	* type
+	* tint (applicable when using the tint type)
+	
+~~~~
+var view = Ti.UI.createView({
+	staticBlur: {
+		enabled: true,
+		type: "light"
+	}
+});
+
+//See example/app.js for all applicable types
+~~~~
 
 ### ImageView
 
@@ -249,6 +282,9 @@ win.add(label);
 A more extensive example is included in `/example/app.js`
 
 ## Changelog
+* 1.2
+	* Static Blurs (a la' iOS 7) for Ti.UI.Window and Ti.UI.Views - by @dezinezync 
+
 * 1.1.5
 	* Attributed Text: Fix for Strings containing Emoji characters
 
