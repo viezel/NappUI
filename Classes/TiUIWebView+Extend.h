@@ -11,6 +11,6 @@
 
 @interface TiUIWebView (Extend)
 
-- (void)setNormalScrollSpeed_:(id)args;
-
+- (void)setNormalScrollSpeed_:(id)args;	
+@property (nonatomic, retain)  NSDictionary *customHeaders;
 @end

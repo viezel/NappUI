@@ -192,8 +192,14 @@ picker.selectionIndicator = true;
 window.add(picker);
 */
 
+/*
+var webview = Ti.UI.createWebView({
+	url: 'https://github.com/viezel/NappUI',
+	scalesPageToFit: true
+});
 
-
+webview.setCustomHeaders({"x-custom-1": "custom-value-1", "x-custom-2": "custom-value-2"});
+*/
 
 window.add(view);
 window.open();
@@ -291,3 +297,4 @@ image.addEventListener('pinching', function(e){
 image.addEventListener('pinchingend', function(e){
 	console.log(e);
 });*/
+

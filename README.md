@@ -123,6 +123,7 @@ image.addEventListener('panend', function(e){});
 * Remove scroll delay
 * Communication between WebView and Titanium app
 * Change UserAgent
+* Add custom headers
 
 ```javascript
 var webView = Ti.UI.createWebView({
@@ -133,6 +134,7 @@ var webView = Ti.UI.createWebView({
     url: 'http://www.appcelerator.com'
 });
 webView.addEventListener('fromWebView', function(){});
+webView.setCustomHeaders({'my-customheader-1': 'custom-header-value', 'add-as-many-headers-as-you-need': 'value'});
 ```
 
 ### ScrollableView
@@ -282,6 +284,10 @@ win.add(label);
 A more extensive example is included in `/example/app.js`
 
 ## Changelog
+
+* 1.2.1
+	* Added support for custom headers in webviews
+
 * 1.2
 	* Static Blurs (a la' iOS 7) for Ti.UI.Window and Ti.UI.Views - by @dezinezync 
 
