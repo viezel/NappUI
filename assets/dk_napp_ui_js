@@ -1,1 +1,0 @@
-Ti.UI.createWindow();Ti.UI.createTab();Ti.UI.createTabGroup();Ti.UI.createWindow();Ti.UI.iPhone.createNavigationGroup();Ti.UI.createTextField();Ti.UI.createWebView();Ti.UI.createSearchBar();Ti.UI.createScrollableView();Ti.UI.createPicker();Ti.UI.iOS.createToolbar();

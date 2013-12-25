@@ -9,7 +9,7 @@ Ti.UI.createWindow();
 Ti.UI.createTab();
 Ti.UI.createTabGroup();
 Ti.UI.createWindow();
-Ti.UI.iPhone.createNavigationGroup();
+Ti.UI.iOS.createNavigationWindow();
 Ti.UI.createTextField();
 Ti.UI.createWebView();
 Ti.UI.createSearchBar();
