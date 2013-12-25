@@ -285,6 +285,10 @@ A more extensive example is included in `/example/app.js`
 
 ## Changelog
 
+* 1.2.2
+	* min SDK changed to 3.2.0.GA
+	* Removed NavGroup and added NavigationWindow
+
 * 1.2.1
 	* Added support for custom headers in webviews
 
