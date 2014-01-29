@@ -237,12 +237,12 @@ var toolbar = Ti.UI.iOS.createToolbar({
 ```
 
 
-### NavigationGroup
+### NavigationWindow
 
-* Close all windows in the navigationGroup, and return to the very first window in the group.
+* Close all windows in the navigationWindow, and return to the very first window in the group.
 
 ```javascript
-navGroup.popToRoot();
+navWindow.popToRoot();
 ```
 
 
