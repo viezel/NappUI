@@ -1,174 +1,82 @@
 var NappUI = require("dk.napp.ui");
 
 var window = Ti.UI.createWindow({
-	backgroundColor:"#FFF",
-	blur:1
+    backgroundColor: "#FFF",
+    blur: 1
 });
 
 var blurSlider = Ti.UI.createSlider({
-	top : 120,
-	min : 0,
-	max : 1,
-	width : 280,
-	value : 1
+    top: 120,
+    min: 0,
+    max: 1,
+    width: 280,
+    value: 1
 });
 blurSlider.addEventListener('touchend', function(e) {
-	window.setBlur(e.value);
+    window.setBlur(e.value);
 });
 window.add(blurSlider);
 
 //Static Blur
 var staticBlurIndex = 0,
-	staticBlurButton = Ti.UI.createButton({
-		title: "Apply Static Blur",
-		top: 160
-	});
+    staticBlurButton = Ti.UI.createButton({
+        title: "Apply Static Blur",
+        top: 160
+    });
 
-	staticBlurButton.addEventListener("click", function() {
+staticBlurButton.addEventListener("click", function() {
 
-		if(staticBlurIndex > 4) { //We only have 4 possible values and a neutral value
-			staticBlurIndex = 0; //Reset our counter back to 0
-		}
+    if (staticBlurIndex > 4) { //We only have 4 possible values and a neutral value
+        staticBlurIndex = 0; //Reset our counter back to 0
+    }
 
-		var type;
+    var type;
 
-		if(staticBlurIndex < 4) {
-			if(staticBlurIndex == 0) type = "light";
-			else if(staticBlurIndex == 1) type = "extra light";
-			else if(staticBlurIndex == 2) type = "dark";
-			else if(staticBlurIndex == 3) type = "tint";
+    if (staticBlurIndex < 4) {
+        if (staticBlurIndex == 0) type = "light";
+        else if (staticBlurIndex == 1) type = "extra light";
+        else if (staticBlurIndex == 2) type = "dark";
+        else if (staticBlurIndex == 3) type = "tint";
 
-			window.setStaticBlur({
-				enabled: true,
-				type: type,
-				tint: staticBlurIndex==3? "#00ff00" : null //Green tint 
-				//(note that alpha value for the tint doesn't work. It's wrapped to use full alpha) 
-				//(Release the HULK!)
-			});
-		}
-		else {
+        window.setStaticBlur({
+            enabled: true,
+            type: type,
+            tint: staticBlurIndex == 3 ? "#00ff00" : null //Green tint 
+            //(note that alpha value for the tint doesn't work. It's wrapped to use full alpha) 
+            //(Release the HULK!)
+        });
+    } else {
 
-			//Reset it
-			window.setStaticBlur({
-				enabled: false
-			});
+        //Reset it
+        window.setStaticBlur({
+            enabled: false
+        });
 
-		}
+    }
 
-		//Increment our blur counter
-		staticBlurIndex++;
+    //Increment our blur counter
+    staticBlurIndex++;
 
-	});
+});
 
 window.add(staticBlurButton);
 
 var view = Ti.UI.createView({
-	backgroundColor: '#999',
-	height: 50,
-	width: 50,
-	shadow: {
-		shadowColor: '#000',
-		shadowRadius: 10,
-		shadowOffset: { x: 5, y: 5 },
-		shadowOpacity: 1
-	},
-	top: 10
+    backgroundColor: '#999',
+    height: 50,
+    width: 50,
+    shadow: {
+        shadowColor: '#000',
+        shadowRadius: 10,
+        shadowOffset: {
+            x: 5,
+            y: 5
+        },
+        shadowOpacity: 1
+    },
+    top: 10
 });
 
-
-var string = "Hello world. This is an addition by @dezinezync #winning. Coming soon  to the NappUI module.";
-
-var label = Ti.UI.createLabel({
-	width: 290,
-	bottom: 15,
-	left: 15,
-
-	text: string,
-	font: {
-		fontFamily: "Avenir-Roman",
-		fontSize: 16
-	},
-	
-	attributedText: {
-		text: string,
-		color: '#757572',
-		highlightColor: "#444444",
-
-		attributes: [
-		{
-			text: "@dezinezync",
-			font: {
-				fontFamily: "Avenir-Heavy",
-				fontSize: 16
-			},
-			color: "#6161f2",
-			link: "http://twitter.com/dezinezync"
-		}, {
-			text: "#winning",
-			font: {
-				fontFamily: "Avenir-Light",
-				fontSize: 16
-			},
-			color: "blue",
-			link: "http://twitter.com/dezinezync"
-		}, {
-			text: "NappUI module",
-			font: {
-				fontFamily: "HelveticaNeue-Bold",
-				fontSize: 16
-			}
-		}, {
-			range: [58, 6], //Starting index for the word "Coming", length of the word "coming"
-							//Useful for when you have ready-made indexes (eg. Twitter API), 
-							//or multiple occurences of the same word
-			underline: 1, //single line,
-			font: {
-				fontFamily: "HelveticaNeue-BoldItalic"
-				// fontSize will get inheirted from the parent style
-			}
-		}, {
-			text: "soon",
-			underline: 2 //double line
-		}, {
-			text: "to",
-			underline: 3, //bold line,
-			backgroundColor: "green"
-		}, {
-			text: "the",
-			underline: 4, //bold(er) line
-			backgroundColor: "#aaaaaa"
-		}]
-	}
-});
-
-//If you're assigning links, you might want to add this event
-//label.addEventListener('click', function() {}); 
-//If you forget setting this, you won't be able to catch the url event.
-
-label.addEventListener('url', function(e) {
-
-	console.log(e);
-
-	if(e.url) {	
-		Ti.API.info("Got URL");
-		if(Ti.Platform.canOpenURL(e.url)) {
-			Ti.Platform.openURL(e.url);
-		}
-	}
-
-});
-label.addEventListener('longpress', function(e) {
-
-	console.log(e);
-
-	if(e.url) {
-		Ti.API.info("Got URL: LongPressed");
-		if(Ti.Platform.canOpenURL(e.url)) {
-			Ti.Platform.openURL(e.url);
-		}
-	}
-});
-window.add(label);
 
 /*
 //
@@ -297,4 +205,3 @@ image.addEventListener('pinching', function(e){
 image.addEventListener('pinchingend', function(e){
 	console.log(e);
 });*/
-

@@ -246,44 +246,10 @@ navWindow.popToRoot();
 ```
 
 
-### Label
-
-* attributed Text
-
-~~~~
-var string = "This is an example string";
-
-var label = Ti.UI.createLabel({
-	width: Ti.UI.FILL,
-    text: string,
-    font: {
-		fontFamily: "Avenir-Roman",
-		fontSize: 16
-	},
-	attributedText: {
-		text: string, // String
-		attributes: [ // Array
-			{			// Object
-				text: "example",
-				color: "blue"
-			},
-			{
-				text: "string",
-				font: {
-    				fontFamily: "Avenir-Medium",
-    				fontSize: 16
-    			}
-			}
-		]			 	
-	}
-});
-
-win.add(label);
-~~~~
-
-A more extensive example is included in `/example/app.js`
-
 ## Changelog
+
+* 1.2.3
+	* Remove Attributed Text since its supported by Ti SDK.
 
 * 1.2.2
 	* min SDK changed to 3.2.0.GA
