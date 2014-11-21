@@ -5,9 +5,9 @@
  */
 
 #import "TiBase.h"
-#import "TiUIiPhoneNavigationGroupProxy.h"
+#import "TiUIiOSNavWindowProxy.h"
 
-@interface TiUIiPhoneNavigationGroupProxy (Extended)
+@interface TiUIiOSNavWindowProxy (Extended)
 
 -(void)popToRoot:(id)args;
 
