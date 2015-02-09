@@ -53,6 +53,8 @@
 		B679C158177C79D90069CD29 /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B679C156177C79D90069CD29 /* JRSwizzle.h */; };
 		B679C159177C79D90069CD29 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = B679C157177C79D90069CD29 /* JRSwizzle.m */; };
 		B6CF8919177C1BAC005806B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CF8917177C1BA5005806B5 /* QuartzCore.framework */; };
+		BBDF01ED1A1F76B40022541E /* TiUIiOSNavWindowProxy+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = BBDF01EB1A1F76B40022541E /* TiUIiOSNavWindowProxy+Extended.h */; };
+		BBDF01EE1A1F76B40022541E /* TiUIiOSNavWindowProxy+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDF01EC1A1F76B40022541E /* TiUIiOSNavWindowProxy+Extended.m */; };
 		F0F51DE5181EBE3500AD4DD0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F51DE4181EBE3500AD4DD0 /* CoreGraphics.framework */; };
 		F0F51DEC181EC71C00AD4DD0 /* UIImage+ImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = F0F51DEA181EC71C00AD4DD0 /* UIImage+ImageEffects.h */; };
 		F0F51DED181EC71C00AD4DD0 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F51DEB181EC71C00AD4DD0 /* UIImage+ImageEffects.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -103,6 +105,8 @@
 		B679C156177C79D90069CD29 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JRSwizzle.h; path = Classes/JRSwizzle.h; sourceTree = "<group>"; };
 		B679C157177C79D90069CD29 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JRSwizzle.m; path = Classes/JRSwizzle.m; sourceTree = "<group>"; };
 		B6CF8917177C1BA5005806B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BBDF01EB1A1F76B40022541E /* TiUIiOSNavWindowProxy+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUIiOSNavWindowProxy+Extended.h"; path = "Classes/TiUIiOSNavWindowProxy+Extended.h"; sourceTree = "<group>"; };
+		BBDF01EC1A1F76B40022541E /* TiUIiOSNavWindowProxy+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUIiOSNavWindowProxy+Extended.m"; path = "Classes/TiUIiOSNavWindowProxy+Extended.m"; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libDkNappUi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDkNappUi.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F51DE4181EBE3500AD4DD0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F0F51DEA181EC71C00AD4DD0 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "Classes/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				B679C139177C79AF0069CD29 /* TiUIView+Gestures.m */,
 				B679C13A177C79AF0069CD29 /* TiUIView+TiUIWindow+Blurred.h */,
 				B679C13B177C79AF0069CD29 /* TiUIView+TiUIWindow+Blurred.m */,
+				BBDF01EB1A1F76B40022541E /* TiUIiOSNavWindowProxy+Extended.h */,
+				BBDF01EC1A1F76B40022541E /* TiUIiOSNavWindowProxy+Extended.m */,
 				B679C13C177C79AF0069CD29 /* TiUIView+WithShadow.h */,
 				B679C13D177C79AF0069CD29 /* TiUIView+WithShadow.m */,
 				B679C13E177C79AF0069CD29 /* TiUIWebView+Extend.h */,
@@ -219,6 +225,7 @@
 				B6080BFC179048DA00A05964 /* TiUISearchBar+Extended.h in Headers */,
 				B6080BFD179048DA00A05964 /* TiUITabGroup+Extend.h in Headers */,
 				B6080BFE179048DA00A05964 /* TiUITextField+Extended.h in Headers */,
+				BBDF01ED1A1F76B40022541E /* TiUIiOSNavWindowProxy+Extended.h in Headers */,
 				B6080BFF179048DA00A05964 /* TiUIView+Animation.h in Headers */,
 				B6080C00179048DA00A05964 /* TiUIView+Gestures.h in Headers */,
 				B6080C01179048DA00A05964 /* TiUIView+TiUIWindow+Blurred.h in Headers */,
@@ -312,6 +319,7 @@
 				B6080C0C179048ED00A05964 /* TiUIView+TiUIWindow+Blurred.m in Sources */,
 				B6080C0D179048ED00A05964 /* TiUIView+WithShadow.m in Sources */,
 				B6080C0E179048ED00A05964 /* TiUIWebView+Extend.m in Sources */,
+				BBDF01EE1A1F76B40022541E /* TiUIiOSNavWindowProxy+Extended.m in Sources */,
 				F0F51DED181EC71C00AD4DD0 /* UIImage+ImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
