@@ -3,9 +3,10 @@
 # during compilation, packaging, distribution, etc.
 #
 
-version: 1.2.3
+version: 1.2.4
 apiversion: 2
 description: Napp UI
+architectures: armv7 i386 x86_64 arm64
 author: Mads Møller
 license: MIT
 copyright: Napp ApS
